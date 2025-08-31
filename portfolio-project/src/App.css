@@ -1,0 +1,9 @@
+@keyframes marquee-slow {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-marquee-slow {
+  display: inline-block;
+  animation: marquee-slow 16s linear infinite; /* slower speed */
+}

@@ -45,16 +45,20 @@ export default function Navbar() {
       </div>
 
       <div className="hidden md:flex items-center font-future space-x-6">
-        <Button
+        <a href="/menu">
+           <Button
           variant="ghost"
           className="text-lg text-white hover:text-gray-300 cursor-pointer hover:bg-transparent"
         >
           MENU
         </Button>
+        </a>
+       
       </div>
 
       <div className="flex md:hidden items-center font-future space-x-4 text-lg">
-        MENU
+      
+        <a href="/menu"> MENU</a>
       </div>
     </motion.nav>
   );
