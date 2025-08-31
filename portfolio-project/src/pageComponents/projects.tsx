@@ -38,7 +38,7 @@ export default function Project() {
   ];
 
   return (
-    <div  className="w-full  bg-black flex justify-center items-center text-white py-10">
+    <div  className="w-full  bg-black flex justify-center cursor-pointer items-center text-white py-10">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}

@@ -1,14 +1,41 @@
 import './App.css'
 import Navbar from './pageComponents/nav'
 import LandingPage from './page/landing'
-function App() {
+import Menu from './page/menu'
 
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+} from "react-router-dom"
+
+function Layout() {
   return (
-    <div className='bg-black '>
-     <Navbar/>
-      <LandingPage/>
+    <div className="bg-black">
+      <Navbar />
+      <Outlet />
     </div>
   )
+}
+
+function App() {
+  const router = createBrowserRouter([
+    {
+      element: <Layout />, 
+      children: [
+        {
+          path: "/",
+          element: <LandingPage />
+        },
+        {
+          path: "/menu",
+          element: <Menu />
+        }
+      ]
+    }
+  ])
+
+  return <RouterProvider router={router} />
 }
 
 export default App
