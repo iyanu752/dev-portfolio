@@ -1,71 +1,66 @@
-import  { useState } from "react";
+"use client";
+
+import Marquee from "react-fast-marquee";
 import Noise from "@/effects/Animations/Noise/Noise";
 
-// FlowingMenu with hover scroll overlay
-const FlowingMenu = ({ items }) => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+type Item = { link: string; text: string };
 
+function FlowingMenu({ items }: { items: Item[] }) {
   return (
     <div className="relative w-full h-full">
-      <div className="flex flex-col items-center justify-center h-full space-y-12">
-        {items.map((item, index) => (
+      <div className="flex flex-col items-center justify-center h-full space-y-0">
+        {items.map((item, idx) => (
           <div
-            key={index}
-            className="relative group cursor-pointer overflow-hidden"
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
+            key={idx}
+            className="group relative cursor-pointer overflow-hidden"
           >
-            {/* Hover scroll overlay */}
-            {hoveredIndex === index && (
-              <div className="absolute inset-0 z-20 flex items-center justify-center overflow-hidden pointer-events-none">
-                <div className="flex animate-scroll whitespace-nowrap">
-                  {Array.from({ length: 15 }).map((_, i) => (
-                    <span
-                      key={i}
-                      className="text-gray-300 text-3xl md:text-5xl lg:text-6xl font-mono mx-12 tracking-wider opacity-80"
-                    >
-                      {`[ VIEW ${item.text.toUpperCase()} ]`}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
+            {/* MARQUEE OVERLAY */}
+            <div
+              className="
+                pointer-events-none absolute inset-0 z-20
+                flex items-center justify-center
+                opacity-0 group-hover:opacity-100
+                transition-opacity duration-300
+                overflow-hidden w-screen
+              "
+            >
+              <Marquee
+                gradient={false}
+                speed={70}
+                pauseOnHover={false}
+                className="w-screen"
+              >
+                {Array.from({ length: 20 }).map((_, i) => (
+                  <span
+                    key={i}
+                    className="text-gray-300 text-base md:text-xl lg:text-2xl font-mono mx-8 tracking-wider opacity-90"
+                  >
+                    {`[ VIEW ${item.text.toUpperCase()} ]`}
+                  </span>
+                ))}
+              </Marquee>
+            </div>
 
-            {/* Main text */}
             <a
               href={item.link}
-              className={`relative block text-white text-6xl md:text-8xl font-black tracking-tight transition-all duration-500 ease-out px-8 py-4
-                ${
-                  hoveredIndex === index
-                    ? "opacity-50 blur-sm scale-95"
-                    : "opacity-100 blur-none scale-100"
-                }`}
+              className="
+                relative z-10 block
+                text-white text-6xl md:text-8xl font-black
+                tracking-tight leading-[0.95]
+                transition-all duration-300
+                group-hover:opacity-50 group-hover:blur-sm group-hover:scale-95
+                px-0 py-0
+              "
             >
               {item.text}
             </a>
           </div>
         ))}
       </div>
-
-      <style jsx>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(100%);
-          }
-          100% {
-            transform: translateX(-100%);
-          }
-        }
-
-        .animate-scroll {
-          animation: scroll 15s linear infinite;
-        }
-      `}</style>
     </div>
   );
-};
+}
 
-// Main Menu
 export default function Menu() {
   const demoItems = [
     { link: "#", text: "ABOUT" },
@@ -75,7 +70,6 @@ export default function Menu() {
 
   return (
     <div className="relative w-full h-screen bg-black flex justify-center items-center overflow-hidden">
-      {/* Keep your noise effect intact */}
       <Noise
         patternSize={250}
         patternScaleX={2}
@@ -84,7 +78,10 @@ export default function Menu() {
         patternAlpha={20}
       />
 
-      <div style={{ height: "600px", position: "relative" }}>
+      <div
+        className="leading-1"
+        style={{ height: "600px", position: "relative" }}
+      >
         <FlowingMenu items={demoItems} />
       </div>
     </div>
