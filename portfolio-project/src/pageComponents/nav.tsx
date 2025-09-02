@@ -4,15 +4,15 @@ import { motion } from "framer-motion";
 
 export default function Navbar() {
   return (
-      <motion.nav
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
-        className="w-full fixed top-0 left-0 flex items-center justify-between px-6 py-4 text-white z-50 "
-      >
+    <motion.nav
+      initial={{ opacity: 0, y: -30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
+      className="w-full fixed top-0 left-0 flex items-center justify-between px-6 py-4 text-white z-50 "
+    >
       <div className="flex items-center cursor-pointer space-x-2 font-future">
         <Sparkles
-          className="w-7 h-7" 
+          className="w-7 h-7"
           style={{ stroke: "url(#sparkles-gradient)" }}
         />
 
@@ -40,24 +40,22 @@ export default function Navbar() {
         </svg>
 
         <span className="text-xl font-semibold tracking-wide uppercase">
-          JACX
+          <a href="/">JACX</a>
         </span>
       </div>
 
       <div className="hidden md:flex items-center font-future space-x-6">
         <a href="/menu">
-           <Button
-          variant="ghost"
-          className="text-lg text-white hover:text-gray-300 cursor-pointer hover:bg-transparent"
-        >
-          MENU
-        </Button>
+          <Button
+            variant="ghost"
+            className="text-lg text-white hover:text-gray-300 cursor-pointer hover:bg-transparent"
+          >
+            MENU
+          </Button>
         </a>
-       
       </div>
 
       <div className="flex md:hidden items-center font-future space-x-4 text-lg">
-      
         <a href="/menu"> MENU</a>
       </div>
     </motion.nav>
