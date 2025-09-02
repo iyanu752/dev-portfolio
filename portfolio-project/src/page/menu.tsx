@@ -1,9 +1,14 @@
-"use client";
-
+import { FiArrowUpRight } from "react-icons/fi";
+import { motion, easeInOut } from "framer-motion";
 import Marquee from "react-fast-marquee";
 import Noise from "@/effects/Animations/Noise/Noise";
 
 type Item = { link: string; text: string };
+
+const links = [
+  { name: "LinkedIn", href: "www.linkedin.com/in/ahmed-iyanuoluwa-b4111a26a" },
+  { name: "GitHub", href: "https://github.com/iyanu752" },
+];
 
 function FlowingMenu({ items }: { items: Item[] }) {
   return (
@@ -14,7 +19,7 @@ function FlowingMenu({ items }: { items: Item[] }) {
             key={idx}
             className="group relative cursor-pointer overflow-hidden"
           >
-            {/* MARQUEE OVERLAY */}
+      
             <div
               className="
                 pointer-events-none absolute inset-0 z-20
@@ -33,7 +38,7 @@ function FlowingMenu({ items }: { items: Item[] }) {
                 {Array.from({ length: 20 }).map((_, i) => (
                   <span
                     key={i}
-                    className="text-gray-300 text-base md:text-xl lg:text-2xl font-mono mx-8 tracking-wider opacity-90"
+                    className="text-gray-300 text-base md:text-xl lg:text-2xl font-future font-light mx-8 tracking-wider opacity-90"
                   >
                     {`[ VIEW ${item.text.toUpperCase()} ]`}
                   </span>
@@ -45,11 +50,12 @@ function FlowingMenu({ items }: { items: Item[] }) {
               href={item.link}
               className="
                 relative z-10 block
-                text-white text-6xl md:text-8xl font-black
+                text-white text-6xl md:text-8xl
                 tracking-tight leading-[0.95]
                 transition-all duration-300
                 group-hover:opacity-50 group-hover:blur-sm group-hover:scale-95
                 px-0 py-0
+                font-future font-bold
               "
             >
               {item.text}
@@ -61,11 +67,19 @@ function FlowingMenu({ items }: { items: Item[] }) {
   );
 }
 
+
 export default function Menu() {
+  const underlineTransition = { duration: 0.28, ease: easeInOut };
+
+  const underlineVariants = {
+    rest: { scaleX: 0 },
+    hover: { scaleX: 1 },
+  };
+
   const demoItems = [
     { link: "#", text: "ABOUT" },
     { link: "#", text: "PLAYGROUND" },
-    { link: "#", text: "CONTACT" },
+    { link: "/contact", text: "CONTACT" },
   ];
 
   return (
@@ -77,13 +91,38 @@ export default function Menu() {
         patternRefreshInterval={1}
         patternAlpha={20}
       />
+<div className="leading-1 flex flex-col items-center space-y-2">
+    <div className=" font-future font-extrabold">
+        <FlowingMenu  items={demoItems} />
+    </div>
 
-      <div
-        className="leading-1"
-        style={{ height: "600px", position: "relative" }}
+
+ 
+  <div className="flex items-center justify-center gap-8 font-future  font-light">
+    {links.map((link) => (
+      <motion.a
+        key={link.name}
+        href={link.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative flex items-center gap-2 no-underline text-white text-lg"
+        initial="rest"
+        animate="rest"
+        whileHover="hover"
       >
-        <FlowingMenu items={demoItems} />
-      </div>
+        <span>{link.name}</span>
+        <FiArrowUpRight size={18} />
+        <motion.span
+          className="pointer-events-none absolute left-0 -bottom-1 h-[2px] w-full bg-white"
+          style={{ transformOrigin: "left center" }}
+          variants={underlineVariants}
+          transition={underlineTransition}
+        />
+      </motion.a>
+    ))}
+  </div>
+</div>
+
     </div>
   );
 }

@@ -24,7 +24,6 @@ export default function Footer() {
 
 
       <div className="w-full md:w-2/3 flex items-center justify-end gap-8">
-        {/* Social Links */}
         <div className="flex items-center gap-8">
           {links.map((link) => (
             <motion.a
@@ -50,8 +49,6 @@ export default function Footer() {
         </div>
 
         <span className="hidden md:block h-5 w-px bg-white/30" />
-
-        {/* Back to Top */}
         <motion.button
           onClick={handleBackToTop}
           className="relative no-underline cursor-pointer"
