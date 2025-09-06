@@ -3,7 +3,7 @@ import Navbar from './pageComponents/nav'
 import LandingPage from './page/landing'
 import Menu from './page/menu'
 import Contact from './page/contact'
-
+import About from './page/about'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -36,6 +36,10 @@ function App() {
           path: "/contact",
           element: <Contact/>
         },
+        {
+          path: "/about",
+          element: <About/>
+        }
       ]
     }
   ])

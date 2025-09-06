@@ -77,7 +77,7 @@ export default function Menu() {
   };
 
   const demoItems = [
-    { link: "#", text: "ABOUT" },
+    { link: "/about", text: "ABOUT" },
     { link: "#", text: "PLAYGROUND" },
     { link: "/contact", text: "CONTACT" },
   ];

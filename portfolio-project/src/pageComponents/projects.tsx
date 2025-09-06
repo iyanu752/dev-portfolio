@@ -19,16 +19,16 @@ export default function Project() {
       image:
         "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=2000&q=80",
     },
+    // {
+    //   id: 3,
+    //   title: "City Lights",
+    //   category: "Urban",
+    //   label: "MODERN",
+    //   image:
+    //     "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=2000&q=80",
+    // },
     {
       id: 3,
-      title: "City Lights",
-      category: "Urban",
-      label: "MODERN",
-      image:
-        "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=2000&q=80",
-    },
-    {
-      id: 4,
       title: "SPEEDTYPE",
       category: "Architecture",
       label: "FUTURE",
