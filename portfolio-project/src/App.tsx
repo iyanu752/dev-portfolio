@@ -9,6 +9,9 @@ import {
   RouterProvider,
   Outlet,
 } from "react-router-dom"
+import SpeedType from './page/speedtype'
+import Estaterun from './page/estaterun'
+import Agromat from './page/agromat'
 
 function Layout() {
   return (
@@ -39,7 +42,20 @@ function App() {
         {
           path: "/about",
           element: <About/>
+        },
+        {
+          path: "/speedtype",
+          element: <SpeedType/>
+        },
+        {
+          path: "/estaterun",
+          element: <Estaterun/>
+        },
+        {
+          path: "/agromat",
+          element: <Agromat/>
         }
+
       ]
     }
   ])

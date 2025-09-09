@@ -10,6 +10,7 @@ export default function Project() {
       label: "FUTURE",
       image:
         "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=2000&q=80",
+      link: "/estaterun"  
     },
     {
       id: 2,
@@ -18,6 +19,7 @@ export default function Project() {
       label: "ARCHITECTURE",
       image:
         "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=2000&q=80",
+      link: "/agromat"  
     },
     // {
     //   id: 3,
@@ -34,6 +36,7 @@ export default function Project() {
       label: "FUTURE",
       image:
         "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?auto=format&fit=crop&w=2000&q=80",
+      link: '/speedtype'  
     },
   ];
 
@@ -52,10 +55,12 @@ export default function Project() {
         className="flex flex-wrap w-full max-w-[98%] mx-auto px-2 md:px-4 gap-4"
       >
         {projects.map((project) => (
+        
           <div
             key={project.id}
             className="relative flex-1 min-w-[48%] rounded-2xl overflow-hidden group"
           >
+            <a href={project.link}>
             <img
               src={project.image}
               alt={project.title}
@@ -83,6 +88,7 @@ export default function Project() {
             <h3 className="absolute bottom-5 left-5 text-3xl sm:text-4xl font-bold z-10">
               {project.title}
             </h3>
+          </a>
           </div>
         ))}
       </motion.div>
