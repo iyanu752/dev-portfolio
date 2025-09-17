@@ -64,20 +64,35 @@ export default function Estaterunpage() {
               </p>
 
               <div className="flex space-x-4 pt-4">
-                {["VIEW PROJECT", "VIEW CODE"].map((label) => (
-                  <button
-                    key={label}
-                    className="
+                <a
+                  href="https://estate-run-client.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
                     cursor-pointer relative overflow-hidden border border-white text-white px-6 py-2 rounded-lg font-semibold shadow-md
                     transition-colors duration-300
                     before:absolute before:inset-0 before:bg-orange-600 before:translate-y-full before:transition-transform before:duration-300
                     hover:before:translate-y-0 hover:text-black hover:border-orange-600
                   "
-                  >
-                    <span className="relative z-10">{label}</span>
-                  </button>
-                ))}
+                >
+                  <span className="relative z-10">VIEW PROJECT</span>
+                </a>
+
+                <a
+                  href="https://github.com/iyanu752/estate-run-client"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    cursor-pointer relative overflow-hidden border border-white text-white px-6 py-2 rounded-lg font-semibold shadow-md
+                    transition-colors duration-300
+                    before:absolute before:inset-0 before:bg-orange-600 before:translate-y-full before:transition-transform before:duration-300
+                    hover:before:translate-y-0 hover:text-black hover:border-orange-600
+                  "
+                >
+                  <span className="relative z-10">VIEW CODE</span>
+                </a>
               </div>
+
             </motion.div>
           </div>
 

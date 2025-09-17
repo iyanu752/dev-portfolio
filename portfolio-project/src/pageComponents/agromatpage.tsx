@@ -66,9 +66,15 @@ export default function AgromatPage() {
             </p>
 
             <div className="flex space-x-4 pt-4">
-              {["VIEW PROJECT", "VIEW CODE"].map((label) => (
-                <button
+              {[
+                { label: "VIEW PROJECT", link: "https://agromat.vercel.app/" },
+                { label: "VIEW CODE", link: "https://github.com/iyanu752/Agromat" },
+              ].map(({ label, link }) => (
+                <a
                   key={label}
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="
                     cursor-pointer relative overflow-hidden border border-white text-white px-6 py-2 rounded-lg font-semibold shadow-md
                     transition-colors duration-300
@@ -77,9 +83,10 @@ export default function AgromatPage() {
                   "
                 >
                   <span className="relative z-10">{label}</span>
-                </button>
+                </a>
               ))}
             </div>
+
           </motion.div>
         </div>
 

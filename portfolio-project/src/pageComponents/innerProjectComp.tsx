@@ -9,8 +9,7 @@ export default function InnerProject() {
     {
       id: 1,
       title: "ESTATE RUN",
-      category: "AR/VR",
-      label: "FUTURE",
+      category: "In-Progress",
       image:
         "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=2000&q=80",
       link: "/estaterun",
@@ -18,8 +17,7 @@ export default function InnerProject() {
     {
       id: 2,
       title: "AGROMAT",
-      category: "Architecture",
-      label: "ARCHITECTURE",
+      category: "In-Progress",
       image:
         "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=2000&q=80",
       link: "/agromat",
@@ -27,8 +25,7 @@ export default function InnerProject() {
     {
       id: 3,
       title: "SPEEDTYPE",
-      category: "Architecture",
-      label: "FUTURE",
+      category: "Completed",
       image:
         "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?auto=format&fit=crop&w=2000&q=80",
       link: "/speedtype",
@@ -77,9 +74,6 @@ export default function InnerProject() {
                 <div className="absolute top-5 left-5 flex flex-col space-y-2 z-10">
                   <span className="px-3 py-1 bg-gray-800/70 rounded-full text-xs uppercase tracking-wide">
                     {project.category}
-                  </span>
-                  <span className="text-sm font-medium text-orange-400">
-                    {project.label}
                   </span>
                 </div>
 
