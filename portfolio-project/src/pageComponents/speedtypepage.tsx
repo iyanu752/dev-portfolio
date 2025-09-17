@@ -1,16 +1,25 @@
 import Noise from "@/effects/Animations/Noise/Noise";
 import { motion } from "framer-motion";
+import speedtypeImage1 from '@/assets/speedtype1.png';
+import speedtypeImage2 from '@/assets/speedtype2.png';
+import Landing from '@/assets/Landing.png';;
+import game from '@/assets/game.png';
 export default function SpeedTypePage() {
-      const fadeUp = {
+  const fadeUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 },
   };
-    return (
-        <>
-            <div className="bg-black text-white min-h-screen flex flex-col px-6 md:px-12 py-28">
-     
-      <div className="flex flex-col md:flex-row">
 
+  const images = [
+    speedtypeImage1,
+    speedtypeImage2,
+    Landing,
+    game
+  ];
+
+  return (
+    <div className="bg-black text-white min-h-screen flex flex-col px-6 md:px-12 py-28">
+      <div className="flex flex-col md:flex-row">
         <div className="md:w-1/2 md:pr-12 space-y-6 md:sticky md:top-12 self-start">
           <motion.h1
             className="text-6xl font-bold"
@@ -34,7 +43,6 @@ export default function SpeedTypePage() {
             Expand Your Typing Skills
           </motion.p>
 
-       
           <div className="flex flex-wrap gap-3">
             {["React", "NodeJs", "MongoDb", "Material Tailwind"].map((tech) => (
               <span
@@ -51,7 +59,7 @@ export default function SpeedTypePage() {
             ))}
           </div>
 
-          
+
           <motion.div
             className="space-y-3"
             variants={fadeUp}
@@ -66,11 +74,16 @@ export default function SpeedTypePage() {
               their typing speed, accuracy, and endurance through interactive
               practice sessions.
             </p>
-
             <div className="flex space-x-4 pt-4">
-              {["VIEW PROJECT", "VIEW CODE"].map((label) => (
-                <button
+              {[
+                { label: "VIEW PROJECT", link: "https://speedtype-five.vercel.app/" },
+                { label: "VIEW CODE", link: "https://github.com/iyanu752/speedtype" },
+              ].map(({ label, link }) => (
+                <a
                   key={label}
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="
                     cursor-pointer relative overflow-hidden border border-white text-white px-6 py-2 rounded-lg font-semibold shadow-md
                     transition-colors duration-300
@@ -79,13 +92,11 @@ export default function SpeedTypePage() {
                   "
                 >
                   <span className="relative z-10">{label}</span>
-                </button>
+                </a>
               ))}
             </div>
           </motion.div>
         </div>
-
-       
         <div className="md:w-full mt-10 md:mt-0 space-y-10 pr-2">
           <motion.div
             className="space-y-10"
@@ -99,7 +110,7 @@ export default function SpeedTypePage() {
               },
             }}
           >
-            {[1, 2, 3, 4].map((i) => (
+            {images.map((src, i) => (
               <motion.div
                 key={i}
                 className="relative overflow-hidden rounded-3xl shadow-lg"
@@ -118,8 +129,8 @@ export default function SpeedTypePage() {
                   patternAlpha={50}
                 />
                 <img
-                  src="https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?auto=format&fit=crop&w=2000&q=80"
-                  alt={`SpeedType Preview ${i}`}
+                  src={src}
+                  alt={`SpeedType Preview ${i + 1}`}
                   className="
                     object-cover w-full rounded-3xl
                     h-[30vh] sm:h-[35vh] md:h-[40vh] lg:h-[90vh]
@@ -130,8 +141,6 @@ export default function SpeedTypePage() {
           </motion.div>
         </div>
       </div>
-
     </div>
-        </>
-    )
+  );
 }
