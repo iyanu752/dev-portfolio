@@ -20,7 +20,7 @@ export default function Contact() {
             <form className="space-y-6 w-full">
               <div>
                 <label className="block text-sm font-future mb-2 text-center md:text-left">
-                  INQUIRY FORM
+                  MESSAGE ME
                 </label>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <input
