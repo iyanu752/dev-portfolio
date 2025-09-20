@@ -1,10 +1,20 @@
 import Noise from "@/effects/Animations/Noise/Noise";
 import { motion } from "framer-motion";
+import estaterun1 from '@/assets/estaterun1.png';
+import estaterun2 from '@/assets/estaterun2.png';
+import estaterun3 from '@/assets/estaterun3.png';
+import estaterun4 from '@/assets/estaterun4.png';
 export default function Estaterunpage() {
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 },
   };
+  const images = [
+    estaterun1,
+    estaterun2,
+    estaterun3,
+    estaterun4,
+  ]
   return (
     <>
       <div className="bg-black text-white min-h-screen flex flex-col px-6 md:px-12 py-28">
@@ -109,7 +119,7 @@ export default function Estaterunpage() {
                 },
               }}
             >
-              {[1, 2, 3, 4].map((i) => (
+              {images.map((src, i) => (
                 <motion.div
                   key={i}
                   className="relative overflow-hidden rounded-3xl shadow-lg"
@@ -128,8 +138,8 @@ export default function Estaterunpage() {
                     patternAlpha={50}
                   />
                   <img
-                    src="https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?auto=format&fit=crop&w=2000&q=80"
-                    alt={`SpeedType Preview ${i}`}
+                    src={src}
+                    alt={`Estaterun Preview ${i + 1}`}
                     className="
                     object-cover w-full rounded-3xl
                     h-[30vh] sm:h-[35vh] md:h-[40vh] lg:h-[90vh]
