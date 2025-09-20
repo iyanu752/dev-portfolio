@@ -1,10 +1,21 @@
 import Noise from "@/effects/Animations/Noise/Noise";
 import { motion } from "framer-motion";
+import Agromat1 from '@/assets/agromat1.png'
+import Agromant2 from '@/assets/agromat2.png'
+import Agromat3 from '@/assets/WhatsApp Image 2025-09-16 at 3.51.54 PM (4).jpeg'
+import Agromat4 from '@/assets/WhatsApp Image 2025-09-16 at 3.51.54 PM (5).jpeg'
 export default function AgromatPage() {
           const fadeUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 },
   };
+
+  const images = [
+    Agromat1,
+    Agromant2,
+    Agromat3,
+    Agromat4
+  ]
     return (
         <>
             <div className="bg-black text-white min-h-screen flex flex-col px-6 md:px-12 py-28">
@@ -104,8 +115,8 @@ export default function AgromatPage() {
               },
             }}
           >
-            {[1, 2, 3, 4].map((i) => (
-              <motion.div
+            {images.map((src, i) => (
+                            <motion.div
                 key={i}
                 className="relative overflow-hidden rounded-3xl shadow-lg"
                 initial={{ opacity: 0, y: 40, scale: 1.02 }}
@@ -123,8 +134,8 @@ export default function AgromatPage() {
                   patternAlpha={50}
                 />
                 <img
-                  src="https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?auto=format&fit=crop&w=2000&q=80"
-                  alt={`SpeedType Preview ${i}`}
+                  src={src}
+                  alt={`Agromat Preview ${i + 1}`}
                   className="
                     object-cover w-full rounded-3xl
                     h-[30vh] sm:h-[35vh] md:h-[40vh] lg:h-[90vh]
