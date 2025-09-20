@@ -1,17 +1,14 @@
-import './App.css'
-import Navbar from './pageComponents/nav'
-import LandingPage from './page/landing'
-import Menu from './page/menu'
-import Contact from './page/contact'
-import About from './page/about'
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Outlet,
-} from "react-router-dom"
-import SpeedType from './page/speedtype'
-import Estaterun from './page/estaterun'
-import Agromat from './page/agromat'
+import "./App.css";
+import Navbar from "./pageComponents/nav";
+import LandingPage from "./page/landing";
+import Menu from "./page/menu";
+import Contact from "./page/contact";
+import About from "./page/about";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import SpeedType from "./page/speedtype";
+import Estaterun from "./page/estaterun";
+import Agromat from "./page/agromat";
+import { Toaster } from "sonner";
 
 function Layout() {
   return (
@@ -19,48 +16,52 @@ function Layout() {
       <Navbar />
       <Outlet />
     </div>
-  )
+  );
 }
 
 function App() {
   const router = createBrowserRouter([
     {
-      element: <Layout />, 
+      element: <Layout />,
       children: [
         {
           path: "/",
-          element: <LandingPage />
+          element: <LandingPage />,
         },
         {
           path: "/menu",
-          element: <Menu />
+          element: <Menu />,
         },
         {
           path: "/contact",
-          element: <Contact/>
+          element: <Contact />,
         },
         {
           path: "/about",
-          element: <About/>
+          element: <About />,
         },
         {
           path: "/speedtype",
-          element: <SpeedType/>
+          element: <SpeedType />,
         },
         {
           path: "/estaterun",
-          element: <Estaterun/>
+          element: <Estaterun />,
         },
         {
           path: "/agromat",
-          element: <Agromat/>
-        }
+          element: <Agromat />,
+        },
+      ],
+    },
+  ]);
 
-      ]
-    }
-  ])
-
-  return <RouterProvider router={router} />
+  return (
+    <>
+      <Toaster position="top-right" expand={true}/>
+      <RouterProvider router={router} />
+    </>
+  );
 }
 
-export default App
+export default App;
