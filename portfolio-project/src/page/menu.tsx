@@ -8,6 +8,7 @@ type Item = { link: string; text: string };
 const links = [
   { name: "LinkedIn", href: "www.linkedin.com/in/ahmed-iyanuoluwa-b4111a26a" },
   { name: "GitHub", href: "https://github.com/iyanu752" },
+  {name: "Medium", href: "https://medium.com/@iyanu752"}
 ];
 
 function FlowingMenu({ items }: { items: Item[] }) {
@@ -78,7 +79,7 @@ export default function Menu() {
 
   const demoItems = [
     { link: "/about", text: "ABOUT" },
-    { link: "#", text: "PLAYGROUND" },
+    // { link: "#", text: "PLAYGROUND" },
     { link: "/contact", text: "CONTACT" },
   ];
 
