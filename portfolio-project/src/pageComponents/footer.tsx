@@ -9,6 +9,7 @@ export default function Footer() {
   const links = [
     { name: "LinkedIn", href: "https://www.linkedin.com/in/ahmed-iyanuoluwa-b4111a26a" },
     { name: "GitHub", href: "https://github.com/iyanu752" },
+    {name: "Medium", href: "https://medium.com/@iyanu752"}
   ];
 
   const underlineVariants = {
