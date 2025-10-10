@@ -1,173 +1,100 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import DecryptedText from '@/effects/Text/DecryptedText';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import AudioPlayer from "./audioPlayer";
+import JourneySection from "./journey";
+function DecryptedText({ text }: { text: string }) {
+  return <span>{text}</span>;
+}
 
 export default function AboutHero() {
   const containerRef = useRef(null);
-  const titleRef = useRef(null);
-  const subtitleRef = useRef(null);
-  const leftQuoteRef = useRef(null);
-  const rightQuoteRef = useRef(null);
-  const buttonRef = useRef(null);
   const fixedTextRef = useRef(null);
 
-  useEffect(() => {
-    const container = containerRef.current;
-    const title = titleRef.current;
-    const subtitle = subtitleRef.current;
-    const leftQuote = leftQuoteRef.current;
-    const rightQuote = rightQuoteRef.current;
-    const button = buttonRef.current;
-    const fixedText = fixedTextRef.current;
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
 
-    // Set initial states
-    gsap.set([subtitle, title, leftQuote, rightQuote, button], {
-      opacity: 0,
-      y: 50,
-    });
+  const subtitleOpacity = useTransform(scrollYProgress, [0.1, 0.25], [0, 1]);
+  const subtitleY = useTransform(scrollYProgress, [0.1, 0.25], [50, 0]);
 
-    // Phase 1: Text fade-in
-    const initialTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: container,
-        start: 'top 80%',
-        end: 'top 20%',
-        scrub: 1,
-      },
-    });
+  const titleOpacity = useTransform(scrollYProgress, [0.15, 0.3], [0, 1]);
+  const titleY = useTransform(scrollYProgress, [0.15, 0.3], [50, 0]);
 
-    initialTl
-      .to(subtitle, {
-        opacity: 1,
-        y: 0,
-        duration: 0.2,
-        ease: 'power2.out',
-      })
-      .to(
-        title,
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.3,
-          ease: 'power2.out',
-        },
-        '-=0.1'
-      )
-      .to(
-        [leftQuote, rightQuote],
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.2,
-          stagger: 0.05,
-          ease: 'power2.out',
-        },
-        '-=0.1'
-      )
-      .to(
-        button,
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.2,
-          ease: 'power2.out',
-        },
-        '-=0.1'
-      );
+  const quotesOpacity = useTransform(scrollYProgress, [0.2, 0.35], [0, 1]);
+  const quotesY = useTransform(scrollYProgress, [0.2, 0.35], [50, 0]);
 
-    // Phase 2: Parallax shrink effect for text
-    gsap.to(fixedText, {
-      scrollTrigger: {
-        trigger: container,
-        start: 'top 50%',
-        end: 'center top',
-        scrub: 1.2,
-      },
-      scale: 0.8,
-      opacity: 0.6,
-      ease: 'power2.inOut',
-    });
-
-    // Phase 3: Fade text out near end
-    gsap.to([fixedText, leftQuote, rightQuote, button], {
-      scrollTrigger: {
-        trigger: container,
-        start: 'bottom 50%',
-        end: 'bottom top',
-        scrub: 1,
-      },
-      opacity: 0,
-      ease: 'power2.inOut',
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, []);
+  const scale = useTransform(scrollYProgress, [0.3, 0.6], [1, 0.8]);
+  const textOpacity = useTransform(
+    scrollYProgress,
+    [0.3, 0.6, 0.8, 1],
+    [1, 0.6, 0.6, 0]
+  );
 
   return (
-    <div className="bg-black font-future text-white overflow-hidden">
+    <div className="bg-black font-sans text-white overflow-hidden">
       {/* Top quote */}
-      <div className="h-screen flex items-center justify-center">
-        <p className="text-white/60 text-lg">
+      <div className="h-screen flex flex-col items-center justify-center">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-white/60 text-lg"
+        >
           "I always told you, you were special."
-        </p>
+        </motion.p>
+        <div className="relative z-50 pointer-events-auto">
+          <AudioPlayer/>
+        </div>
+        
       </div>
 
-      {/* Hero container */}
       <div ref={containerRef} className="h-[250vh] relative">
-        <div
+        <motion.div
           ref={fixedTextRef}
+          style={{ scale, opacity: textOpacity }}
           className="fixed inset-0 flex flex-col items-center justify-center px-8 z-10"
         >
-          {/* Subtitle */}
-          <div
-            ref={subtitleRef}
+          <motion.div
+            style={{ opacity: subtitleOpacity, y: subtitleY }}
             className="text-white/60 text-sm tracking-[0.3em] mb-8 font-light"
           >
             FULLSTACK DEVELOPER
-          </div>
+          </motion.div>
 
-          {/* Title */}
-          <div ref={titleRef} className="text-center mb-16">
+          <motion.div
+            style={{ opacity: titleOpacity, y: titleY }}
+            className="text-center mb-16"
+          >
             <h1 className="text-7xl md:text-9xl font-black tracking-tight leading-none">
               IYANU
               <br />
               AHMED <DecryptedText text="(JACX)" />
             </h1>
-          </div>
+          </motion.div>
 
-          {/* Quotes */}
-          <div className="flex flex-col lg:flex-row items-center justify-between w-full max-w-6xl mb-16 gap-8">
-            <div
-              ref={leftQuoteRef}
-              className="text-white/80 text-sm tracking-wider font-light text-center lg:text-left"
-            >
-              THE FUTURE IS ALREADY HERE
+          <motion.div
+            style={{ opacity: quotesOpacity, y: quotesY }}
+            className="flex flex-col lg:flex-row items-center justify-between w-full max-w-6xl mb-16 gap-8"
+          >
+            <div className="text-white/80 text-sm tracking-wider font-light text-justify lg:text-left">
+              I'M WASTING MY DAYS AS I'VE WASTED MY NIGHTS
+              <br /> AND I'VE WASTED MY YOUTH
             </div>
 
-            <div
-              ref={rightQuoteRef}
-              className="text-white/80 text-sm tracking-wider font-light text-center lg:text-right"
-            >
-              IT&apos;S NOT JUST EVENLY DISTRIBUTED
+            <div className="text-white/80 text-sm tracking-wider font-light text-justify lg:text-right">
+              YOU'RE WAITING FOR SOMETHING YOU'VE WAITED IN VAIN
+              <br /> BECAUSE THERE'S NOTHING FOR YOU
             </div>
-          </div>
-        </div>
+          </motion.div>
+          <br />
+          <motion.span style={{ opacity: quotesOpacity, y: quotesY }}>
+            -Suffication - Crystal castles
+          </motion.span>
+        </motion.div>
       </div>
 
-      {/* Closing section */}
-      <div className="h-screen flex items-center text-center justify-center">
-        <p className="text-white/60 text-lg px-10 font-future max-w-4xl leading-relaxed">
-          Imagination is where I start — sometimes that means coding full-stack
-          apps, other times it’s sketching cartoons and creating new worlds. To
-          me, building software and making art are the same thing: turning ideas
-          into something real.
-        </p>
-      </div>
+      <JourneySection />
     </div>
   );
 }

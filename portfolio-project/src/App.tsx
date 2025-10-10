@@ -9,13 +9,70 @@ import SpeedType from "./page/speedtype";
 import Estaterun from "./page/estaterun";
 import Agromat from "./page/agromat";
 import { Toaster } from "sonner";
-
+import GradualBlur from "./effects/Animations/GradualBlur/GradualBlur";
+import { useEffect, useState } from "react";
 function Layout() {
+    const [showBlur, setShowBlur] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollableDiv = document.querySelector("#scrollable-content");
+      if (!scrollableDiv) return;
+
+      const { scrollTop, scrollHeight, clientHeight } = scrollableDiv;
+      const isAtBottom = scrollTop + clientHeight >= scrollHeight - 50;
+      setShowBlur(!isAtBottom);
+    };
+
+    const scrollableDiv = document.querySelector("#scrollable-content");
+    scrollableDiv?.addEventListener("scroll", handleScroll);
+    return () => scrollableDiv?.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="bg-black">
-      <Navbar />
-      <Outlet />
-    </div>
+    <section
+      style={{
+        position: "relative",
+        minHeight: "100vh",
+        overflow: "hidden",
+        backgroundColor: "black",
+      }}
+    >
+      {/* Scrollable content */}
+      <div
+        id="scrollable-content"
+        style={{
+          height: "100%",
+          overflowY: "auto",
+          position: "relative",
+        }}
+      >
+        <Navbar />
+        <Outlet />
+      </div>
+      {showBlur && (
+        <div
+          style={{
+            position: "fixed",
+            bottom: 0,
+            left: 0,
+            width: "100%",
+            pointerEvents: "none",
+          }}
+        >
+          <GradualBlur
+            target="parent"
+            position="bottom"
+            height="6rem"
+            strength={2}
+            divCount={5}
+            curve="bezier"
+            exponential={true}
+            opacity={1}
+          />
+        </div>
+      )}
+    </section>
   );
 }
 

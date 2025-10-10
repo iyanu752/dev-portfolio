@@ -2,8 +2,8 @@ import Noise from "@/effects/Animations/Noise/Noise";
 import { motion } from "framer-motion";
 import Agromat1 from '@/assets/agromat1.png'
 import Agromant2 from '@/assets/agromat2.png'
-import Agromat3 from '@/assets/WhatsApp Image 2025-09-16 at 3.51.54 PM (4).jpeg'
-import Agromat4 from '@/assets/WhatsApp Image 2025-09-16 at 3.51.54 PM (5).jpeg'
+import Agromat3 from '@/assets/agromat3.png'
+import Agromat4 from '@/assets/agromat4.png'
 export default function AgromatPage() {
           const fadeUp = {
     hidden: { opacity: 0, y: 30 },
@@ -102,7 +102,7 @@ export default function AgromatPage() {
         </div>
 
        
-        <div className="md:w-full mt-10 md:mt-0 space-y-10 pr-2">
+        <div className="md:w-full  mt-10 md:mt-0 space-y-10 pr-2">
           <motion.div
             className="space-y-10"
             initial="hidden"
