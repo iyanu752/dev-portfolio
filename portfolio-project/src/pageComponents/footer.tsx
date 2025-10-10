@@ -20,7 +20,7 @@ export default function Footer() {
   const underlineTransition = { duration: 0.28, ease: easeInOut }; 
 
   return (
-    <footer className="flex items-center justify-between text-white py-6 px-6 font-future ">
+    <footer className="flex items-center mb-16 justify-between text-white py-6 px-6 font-future ">
       <div className="w-fit md:w-1/3" />
       <div className="w-full md:w-2/3 flex items-center justify-between md:justify-end gap-8">
         <div className="flex flex-col md:flex-row items-center gap-8">
