@@ -30,7 +30,7 @@ export default function Footer() {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative flex items-center gap-2 no-underline"
+              className="relative flex z-50 items-center gap-2 no-underline"
               initial="rest"
               animate="rest"
               whileHover="hover"
