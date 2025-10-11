@@ -47,7 +47,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <span className="hidden md:block h-5 w-px bg-white/30" />
+        <span className="hidden z-50 md:block h-5 w-px bg-white/30" />
         <motion.button
           onClick={handleBackToTop}
           className="relative no-underline cursor-pointer"
