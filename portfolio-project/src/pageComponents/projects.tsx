@@ -61,13 +61,12 @@ export default function Project() {
               onMouseLeave={() => setHoveredId(null)}
               className="relative group cursor-pointer"
             >
-            
-              <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-white/20 via-white/10 to-white/5 backdrop-blur-md" />
-              <div className="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-blue-500/20 via-purple-500/20 to-pink-500/20 animate-pulse" />
+              {/* Glow Effect */}
+              <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-blue-500/30 via-purple-500/30 to-pink-500/30 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               
               {/* Main Card */}
               <a href={project.link} className="block relative">
-                <div className="relative bg-gray-900/50 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10">
+                <div className="relative bg-zinc-950 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
                  
                   <div className="relative w-full" style={{ paddingBottom: '62.5%' }}>
                     <iframe
@@ -76,20 +75,15 @@ export default function Project() {
                       className="absolute inset-0 w-full h-full border-0 pointer-events-none scale-100 transition-transform duration-700 group-hover:scale-105"
                     />
                     
-            
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
-                   
-                    <div 
-                      className="absolute inset-0 opacity-30 mix-blend-overlay pointer-events-none"
-                      style={{
-                        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-                        backgroundRepeat: 'repeat',
-                      }}
-                    />
+                    {/* Strong gradient overlay for text visibility */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30 group-hover:from-black/95 group-hover:via-black/70 transition-all duration-500" />
+                    
+                    {/* Additional solid overlay at bottom for guaranteed text contrast */}
+                    <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black to-transparent" />
                   </div>
 
                   {/* Content Overlay */}
-                  <div className="absolute inset-0 flex flex-col justify-between p-6 md:p-8">
+                  <div className="absolute inset-0 flex flex-col justify-between p-6 md:p-8 pointer-events-none">
                     {/* Top Badge */}
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
@@ -98,14 +92,14 @@ export default function Project() {
                         duration: 0.6,
                         delay: 0.4 + (index * 0.15),
                       }}
-                      className="flex items-start"
+                      className="flex items-start pointer-events-auto"
                     >
-                      <span className="px-4 py-2 bg-black backdrop-blur-md rounded-full text-xs uppercase tracking-wider border border-white/20 shadow-lg">
-                        View Project
+                      <span className="px-4 py-2 bg-white/10 backdrop-blur-xl rounded-full text-xs uppercase tracking-wider border border-white/30 shadow-2xl font-semibold">
+                        Live Preview
                       </span>
                     </motion.div>
 
-                    {/* Bottom Content */}
+                    {/* Bottom Content with enhanced visibility */}
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -113,27 +107,34 @@ export default function Project() {
                         duration: 0.6,
                         delay: 0.5 + (index * 0.15),
                       }}
-                      className="space-y-3"
+                      className="relative z-10"
                     >
-                      <h3 className="text-3xl md:text-4xl font-bold tracking-tight">
-                        {project.title}
-                      </h3>
-                      <p className="text-gray-300  mix-blend-difference text-sm md:text-base opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">
-                        {project.description}
-                      </p>
+                      {/* Text background for extra contrast */}
+                      <div className="absolute -inset-4 bg-gradient-to-t from-black via-black/80 to-transparent blur-xl" />
                       
-                      {/* Animated Arrow */}
-                      <div className="flex items-center mix-blend-difference gap-2 opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-2 transition-all duration-500">
-                        <span className="text-sm font-medium">Explore</span>
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
+                      <div className="relative space-y-3">
+                        <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight drop-shadow-2xl" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.9), 0 0 40px rgba(0,0,0,0.5)' }}>
+                          {project.title}
+                        </h3>
+                        <p className="text-gray-200 text-sm md:text-base max-w-md drop-shadow-lg opacity-90 group-hover:opacity-100 transition-opacity duration-300" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.9)' }}>
+                          {project.description}
+                        </p>
+                        
+                        {/* Animated Arrow with background */}
+                        <div className="flex items-center gap-2 pt-2 pointer-events-auto">
+                          <span className="inline-flex items-center gap-2 px-4 py-2 bg-white text-black rounded-full text-sm font-semibold shadow-xl transform group-hover:scale-105 transition-transform duration-300">
+                            <span>View Project</span>
+                            <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                          </span>
+                        </div>
                       </div>
                     </motion.div>
                   </div>
 
-                  {/* Glass Reflection Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                  {/* Subtle shine effect on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
                 </div>
               </a>
             </motion.div>
