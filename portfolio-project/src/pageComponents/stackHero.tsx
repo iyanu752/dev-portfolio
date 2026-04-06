@@ -2,37 +2,43 @@ import { motion } from "framer-motion";
 
 export default function Stack() {
   return (
-    <div className="w-full py-28 flex items-center justify-center text-white font-future font-extrabold px-4">
-      <div className="flex flex-col items-center">
-
-        <span className="font-future font-light text-base sm:text-lg md:text-xl lg:text-2xl text-center leading-relaxed mb-6 max-w-3xl text-gray-400">
-          “Your mind is the interface, your tools are the extensions.”  
-          <br />– Some Random Dude (My Imagination)
-        </span>
-
-        <div className="text-center">
+    <section className="px-4 py-18 text-white md:px-6">
+      <div className="mx-auto max-w-7xl">
+        <div className="tech-panel p-6 md:p-10">
+          <span className="terminal-label">Tools / Systems / Discipline</span>
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.6, type: "spring", stiffness: 100, damping: 15 }}
-            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
+            viewport={{ once: true }}
+            transition={{ duration: 0.45 }}
+            className="mt-6 max-w-3xl font-terminal text-sm uppercase tracking-[0.18em] text-[#9fb38a]"
           >
-            TECH
+            Your mind is the interface, your tools are the extensions.
+            <span className="ml-3 text-[#ff6b6b]">Imagined transmission</span>
           </motion.p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.6, type: "spring", stiffness: 100, damping: 15, delay: 0.2 }}
-            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-[0.6]"
-          >
-            STACK
-          </motion.p>
+          <div className="mt-8 flex flex-col gap-2 text-center md:text-left">
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.55 }}
+              className="section-title"
+            >
+              Tech
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.55, delay: 0.12 }}
+              className="section-title"
+            >
+              <span className="accent">Stack</span>
+            </motion.p>
+          </div>
         </div>
-
       </div>
-    </div>
+    </section>
   );
 }

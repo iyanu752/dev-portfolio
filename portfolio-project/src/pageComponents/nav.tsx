@@ -1,5 +1,5 @@
-import { Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Crosshair, Menu as MenuIcon } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Navbar() {
@@ -7,56 +7,36 @@ export default function Navbar() {
     <motion.nav
       initial={{ opacity: 0, y: -30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
-      className="w-full fixed top-0 left-0 flex items-center justify-between px-6 py-4 text-white z-50 "
+      transition={{ duration: 0.35, ease: "easeOut", delay: 0.15 }}
+      className="fixed left-0 top-0 z-50 w-full px-4 py-4 md:px-6"
     >
-      <div className="flex items-center cursor-pointer space-x-2 font-future">
-        <Sparkles
-          className="w-7 h-7"
-          style={{ stroke: "url(#sparkles-gradient)" }}
-        />
-
-        <svg width="0" height="0">
-          <defs>
-            <linearGradient id="sparkles-gradient" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%">
-                <animate
-                  attributeName="stop-color"
-                  values="#f97316;#fb923c;#3b82f6;#60a5fa;#f97316"
-                  dur="8s"
-                  repeatCount="indefinite"
-                />
-              </stop>
-              <stop offset="100%">
-                <animate
-                  attributeName="stop-color"
-                  values="#3b82f6;#60a5fa;#f97316;#fb923c;#3b82f6"
-                  dur="8s"
-                  repeatCount="indefinite"
-                />
-              </stop>
-            </linearGradient>
-          </defs>
-        </svg>
-
-        <span className="text-xl font-semibold tracking-wide uppercase">
-          <a href="/">JACX</a>
-        </span>
-      </div>
-
-      <div className="hidden md:flex items-center font-future space-x-6">
-        <a href="/menu">
-          <Button
-            variant="ghost"
-            className="text-lg text-white hover:text-gray-300 cursor-pointer hover:bg-transparent"
-          >
-            MENU
-          </Button>
+      <div className="tech-panel mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6">
+        <a href="/" className="flex items-center gap-3">
+          <span className="symbol-mark h-11 w-11 shrink-0" />
+          <div>
+            <p className="terminal-label">Signal / JACX</p>
+            <span className="mt-1 flex items-center gap-2 text-xl font-semibold uppercase tracking-[0.28em] text-white">
+              <Crosshair className="h-4 w-4 text-[#d4ff42]" />
+              Dev Archive
+            </span>
+          </div>
         </a>
-      </div>
 
-      <div className="flex md:hidden items-center font-future space-x-4 text-lg">
-        <a href="/menu"> MENU</a>
+        <div className="hidden items-center gap-3 md:flex">
+          <a href="/about" className="tech-button">
+            Bio Log
+          </a>
+          <a href="/menu">
+            <Button variant="outline" className="border-[rgba(255,216,77,0.26)] text-[#fff7d1]">
+              Menu
+            </Button>
+          </a>
+        </div>
+
+        <a href="/menu" className="tech-button md:hidden">
+          <MenuIcon className="h-4 w-4" />
+          Menu
+        </a>
       </div>
     </motion.nav>
   );

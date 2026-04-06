@@ -56,18 +56,18 @@ export default function Contact() {
     <>
       <section className="w-full min-h-screen bg-black text-white flex justify-center items-center px-4 sm:px-6 md:px-12 py-12 md:py-16">
         <div className="max-w-7xl w-full flex flex-col md:flex-row items-center md:items-start gap-8">
-          {/* Left Side - Form */}
-          <div className="flex-1 md:flex-[2] flex flex-col justify-center w-full">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-center md:text-left">
+          <div className="tech-panel flex-1 md:flex-[2] flex flex-col justify-center w-full p-6 md:p-8">
+            <span className="terminal-label">Contact</span>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4 mt-5 text-center md:text-left uppercase tracking-[0.14em]">
               Contact
             </h2>
-            <p className="text-gray-400 text-base sm:text-lg mb-8 text-center md:text-left">
+            <p className="text-gray-400 text-base sm:text-lg mb-8 text-center md:text-left font-terminal uppercase tracking-[0.16em]">
               Remember, this is not just a story, this is our future
             </p>
 
             <form className="space-y-6 w-full" onSubmit={handleSubmit}>
               <div>
-                <label className="block text-sm font-future mb-2 text-center md:text-left">
+                <label className="block text-sm mb-2 text-center md:text-left font-terminal uppercase tracking-[0.18em] text-[#d4ff42]">
                   MESSAGE ME
                 </label>
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -77,7 +77,7 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="NAME"
-                    className="w-full sm:w-1/2 px-4 py-3 bg-neutral-900 text-gray-300 rounded-lg focus:outline-none"
+                    className="w-full sm:w-1/2 px-4 py-3 bg-[#111712] text-gray-300 border border-white/10 focus:outline-none"
                     required
                   />
                   <input
@@ -86,7 +86,7 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="EMAIL"
-                    className="w-full sm:w-1/2 px-4 py-3 bg-neutral-900 text-gray-300 rounded-lg focus:outline-none"
+                    className="w-full sm:w-1/2 px-4 py-3 bg-[#111712] text-gray-300 border border-white/10 focus:outline-none"
                     required
                   />
                 </div>
@@ -97,14 +97,14 @@ export default function Contact() {
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="MESSAGE"
-                className="w-full px-4 py-3 h-32 bg-neutral-900 text-gray-300 rounded-lg focus:outline-none"
+                className="w-full px-4 py-3 h-32 bg-[#111712] text-gray-300 border border-white/10 focus:outline-none"
                 required
               />
 
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-white text-black font-bold py-4 rounded-lg hover:bg-gray-200 transition disabled:opacity-50"
+                className="w-full bg-[#111712] text-white font-bold py-4 border border-[#d4ff42]/30 uppercase tracking-[0.18em] hover:bg-[#d4ff42] hover:text-[#081007] transition-colors disabled:opacity-50"
               >
                 {isLoading ? "SENDING..." : "SEND EMAIL"}
               </button>
@@ -117,9 +117,8 @@ export default function Contact() {
             </form>
           </div>
 
-          {/* Right Side - Orb */}
           <div className="flex-1 md:flex-[1] flex justify-center items-center w-full">
-            <div className="w-full h-[250px] sm:h-[350px] md:h-[500px] rounded-3xl overflow-hidden relative">
+            <div className="tech-panel w-full h-[250px] sm:h-[350px] md:h-[500px] overflow-hidden relative">
               <Orb
                 hoverIntensity={0.97}
                 rotateOnHover={true}
@@ -131,7 +130,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Lagos Clock */}
       <section className="w-full min-h-screen bg-black text-white flex justify-center items-center px-4">
         <LagosClock />
       </section>

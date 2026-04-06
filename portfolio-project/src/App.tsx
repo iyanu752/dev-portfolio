@@ -34,11 +34,12 @@ function Layout() {
 
   return (
     <section
+      className="tech-shell"
       style={{
         position: "relative",
         minHeight: "100vh",
         overflow: "hidden",
-        backgroundColor: "black",
+        backgroundColor: "#050806",
       }}
     >
       {/* Scrollable content */}

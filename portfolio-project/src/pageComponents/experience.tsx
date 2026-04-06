@@ -1,12 +1,12 @@
-import { FiArrowUpRight } from "react-icons/fi";
+import { ArrowUpRight } from "lucide-react";
 
 export default function Experience() {
   const experiences = [
     {
       name: "FULLSTACK DEVELOPER",
-      place: "ATB TECH (NOTCH CRM)",
+      place: "ATB TECH / NOTCH CRM",
       year: "2023-PRESENT",
-      link: "https://atb.tech/", 
+      link: "https://atb.tech/",
     },
     {
       name: "FRONTEND DEVELOPER",
@@ -23,57 +23,45 @@ export default function Experience() {
   ];
 
   return (
-    <div className="bg-black text-white py-10 px-4 md:px-10">
-      <div className="flex flex-col md:flex-row gap-8">
-
-        <div className="md:w-1/3 flex items-start">
-          <h2 className="text-4xl md:text-5xl font-light font-future  leading-tight">
-            Experience
+    <section className="px-4 py-18 text-white md:px-6">
+      <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[0.7fr_1.3fr]">
+        <div className="tech-panel p-6 md:p-8">
+          <span className="terminal-label">Experience</span>
+          <h2 className="section-title mt-6 text-[clamp(2.8rem,7vw,5rem)]">
+            Work
+            <br />
+            <span className="accent">Log</span>
           </h2>
+          <p className="muted-copy mt-6 max-w-md text-sm leading-7">
+            A short record of the environments where I shipped product work, handled interfaces, and kept learning under live constraints.
+          </p>
         </div>
 
-
-        <div className="md:w-2/3 flex flex-col gap-4">
+        <div className="space-y-4">
           {experiences.map((experience, index) => (
-            <a
-              key={index}
-              href={experience.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group"
-            >
-              <div
-                className="bg-[#171717] rounded-2xl px-9 py-10 flex flex-col md:flex-row 
-                           justify-between items-start md:items-center shadow-md 
-                           transition hover:bg-[#1e1e1e]"
-              >
+            <a key={experience.name} href={experience.link} target="_blank" rel="noopener noreferrer">
+              <div className="tech-panel group p-5 md:p-6">
+                <div className="grid gap-4 md:grid-cols-[1fr_1fr_auto] md:items-center">
+                  <div>
+                    <p className="font-terminal text-[0.68rem] uppercase tracking-[0.22em] text-[#8d9a90]">
+                      Record {String(index + 1).padStart(2, "0")}
+                    </p>
+                    <p className="mt-2 text-lg font-semibold uppercase tracking-[0.14em] text-white md:text-xl">
+                      {experience.name}
+                    </p>
+                  </div>
 
-                <span className="text-sm md:text-lg font-future  text-whit">
-                  {experience.name}
-                </span>
+                  <p className="text-base uppercase tracking-[0.12em] text-[#fff5c9]">
+                    {experience.place}
+                  </p>
 
-                <span className="text-base md:text-lg font-future  font-medium text-white mt-2 md:mt-0">
-                  {experience.place}
-                </span>
-
-                <div className="flex items-center gap-3 mt-2 md:mt-0">
-                  <span className="text-sm md:text-lg font-future  text-whit transition-all">
-                    {experience.year}
-                  </span>
-
- 
-                  <div
-                    className="hidden md:flex transform translate-x-6 opacity-0 
-                               group-hover:translate-x-0 group-hover:opacity-100 
-                               transition-all duration-500 ease-out"
-                  >
-                    <button
-                      className="w-12 h-12 flex items-center justify-center rounded-full 
-                                 bg-white text-black shadow-lg 
-                                 hover:bg-orange-500 hover:text-white transition-colors"
-                    >
-                      <FiArrowUpRight size={20} />
-                    </button>
+                  <div className="flex items-center justify-between gap-4 md:justify-end">
+                    <span className="font-terminal text-sm uppercase tracking-[0.18em] text-[#d4ff42]">
+                      {experience.year}
+                    </span>
+                    <div className="flex h-11 w-11 items-center justify-center border border-white/10 bg-black/30 text-[#d4ff42] transition-colors duration-200 group-hover:bg-[#d4ff42] group-hover:text-[#081007]">
+                      <ArrowUpRight className="h-4 w-4" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -81,6 +69,6 @@ export default function Experience() {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

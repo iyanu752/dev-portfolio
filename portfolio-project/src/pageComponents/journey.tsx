@@ -1,173 +1,136 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export default function JourneySection() {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "end start"]
+    offset: ["start end", "end start"],
   });
 
   const journey = [
     {
       year: "THE BEGINNING",
-      tag: "University",
-      title: "Where It All Started",
-      text: "Someone once told me I was special, and I let it get to my head. A jack of all trades, when I'm not building full stack applications, I'm writing articles on system design or drawing or animating even.",
-      highlight: "Python · Facial Recognition · Teaching",
-      story: "My journey starts from University where I picked up Python to build my Facial Recognition Attendance System Project. In the process, I co-led a class on python basics with the director of software for the department of computer science (my department of course)."
+      tag: "UNIVERSITY",
+      title: "Where It Started",
+      text: "The first real pull was building with Python, experimenting across visual work, writing, and teaching, and discovering that software could hold all of those instincts at once.",
+      highlight: "PYTHON|FACIAL RECOGNITION|TEACHING",
+      story:
+        "University was the first operating theater: a facial-recognition attendance project, practical classes, and the beginning of a habit of learning by making.",
     },
     {
       year: "GROWTH",
-      tag: "Internship",
-      title: "First Real Challenge",
-      text: "After graduation, I picked up an internship as a frontend software developer where I built the frontend of web applications. Due to my knowledge of design, my boss was astonished, if I do say so myself.",
-      highlight: "Frontend · Design · UI/UX"
+      tag: "INTERNSHIP",
+      title: "First Pressure Test",
+      text: "An early frontend role sharpened product instincts and gave real deadlines to design sensitivity, delivery speed, and implementation discipline.",
+      highlight: "FRONTEND|DESIGN|UI UX",
     },
     {
       year: "TODAY",
-      tag: "Present",
+      tag: "PRESENT",
       title: "Always Evolving",
-      text: "Today I work as a fullstack software developer building scalable and ready-to-use web applications. But of course, I am not limited to web applications. I am ever growing, and I adapt to whatever environment and programming language is thrown at me.",
-      highlight: "Full Stack · Scalability · Adaptability"
-    }
+      text: "Now the work spans fullstack applications, scalable flows, and whatever stack best fits the mission. Adaptation is part of the craft, not a side skill.",
+      highlight: "FULL STACK|SCALABILITY|ADAPTABILITY",
+    },
   ];
 
   return (
-    <div ref={sectionRef} className="bg-black py-32 relative overflow-hidden">
-      {/* Animated background gradient */}
-      <motion.div 
+    <section ref={sectionRef} className="relative overflow-hidden px-4 py-24 md:px-6">
+      <motion.div
         style={{
-          opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 0.3, 0.3, 0])
+          opacity: useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 0.3, 0.3, 0]),
         }}
-        className="absolute inset-0 bg-gradient-to-b from-blue-950/20 via-purple-950/20 to-black pointer-events-none"
+        className="pointer-events-none absolute inset-0 glow-grid"
       />
 
-      {/* Timeline line */}
-      <motion.div 
-        style={{
-          scaleY: useTransform(scrollYProgress, [0, 0.9], [0, 1])
-        }}
-        className="absolute left-8 md:left-1/2 top-0 w-px h-full bg-gradient-to-b from-transparent via-white/30 to-transparent origin-top"
-      />
-
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        {/* Section header */}
+      <div className="relative mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-center mb-32"
+          className="mb-14"
         >
-          <h2 className="text-5xl md:text-7xl font-black tracking-tight text-white mb-6">
-            THE JOURNEY
+          <span className="terminal-label">Timeline</span>
+          <h2 className="section-title mt-5">
+            The
+            <br />
+            <span className="accent">Journey</span>
           </h2>
-          <p className="text-white/40 text-sm tracking-[0.3em]">
-            FROM STUDENT TO BUILDER
-          </p>
         </motion.div>
 
-        {/* Journey items */}
-        <div className="space-y-48">
-          {journey.map((item, i) => (
+        <div className="relative space-y-8">
+          <motion.div
+            style={{ scaleY: useTransform(scrollYProgress, [0, 0.9], [0, 1]) }}
+            className="absolute left-4 top-0 hidden h-full w-px origin-top bg-[#d4ff42] md:block"
+          />
+
+          {journey.map((item, index) => (
             <motion.div
-              key={i}
-              initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
+              key={item.year}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true, margin: "-100px" }}
-              className={`relative flex flex-col ${
-                i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-              } items-center gap-12`}
+              className="relative md:pl-12"
             >
-              {/* Timeline dot */}
-              <motion.div
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                viewport={{ once: true }}
-                className="absolute left-8 md:left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-orange-500 shadow-lg shadow-white/50"
-              >
-                <div className="absolute inset-0 rounded-full bg-orange-500 animate-ping opacity-20" />
-              </motion.div>
-
-              {/* Content card */}
-              <motion.div
-                whileHover={{ scale: 1.02, y: -5 }}
-                transition={{ duration: 0.3 }}
-                className="w-full md:w-5/12 ml-16 md:ml-0"
-              >
-                <div className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl p-8 relative overflow-hidden group">
-                  {/* Hover gradient effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/10 group-hover:to-purple-500/10 transition-all duration-500" />
-                  
-                  <div className="relative z-10">
-                    {/* Year tag */}
-                    <div className="inline-block px-3 py-1 bg-white/10 rounded-full text-white/60 text-xs tracking-widest mb-4">
+              <div className="absolute left-0 top-8 hidden h-8 w-8 border border-[rgba(212,255,66,0.28)] bg-[rgba(212,255,66,0.12)] md:block" />
+              <div className="tech-panel p-6 md:p-8">
+                <div className="grid gap-5 lg:grid-cols-[0.36fr_1fr] lg:items-start">
+                  <div>
+                    <p className="font-terminal text-[0.68rem] uppercase tracking-[0.28em] text-[#d4ff42]">
                       {item.year}
-                    </div>
-
-                    {/* Tag */}
-                    <div className="text-white/40 text-sm tracking-wider mb-3">
+                    </p>
+                    <p className="mt-3 text-sm uppercase tracking-[0.18em] text-[#fff5c9]">
                       {item.tag}
-                    </div>
+                    </p>
+                  </div>
 
-                    {/* Title */}
-                    <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
+                  <div>
+                    <h3 className="text-3xl font-semibold uppercase tracking-[0.12em] text-white md:text-4xl">
                       {item.title}
                     </h3>
-
-                    {/* Main text */}
-                    <p className="text-white/70 leading-relaxed mb-6">
+                    <p className="muted-copy mt-5 max-w-3xl text-sm leading-7 md:text-base">
                       {item.text}
                     </p>
 
-                    {/* Story (if exists) */}
-                    {item.story && (
-                      <p className="text-white/50 text-sm leading-relaxed mb-6 italic">
+                    {item.story ? (
+                      <p className="mt-4 border-l border-[rgba(255,77,77,0.34)] pl-4 text-sm leading-7 text-white/70">
                         {item.story}
                       </p>
-                    )}
+                    ) : null}
 
-                    {/* Highlight tags */}
-                    <div className="flex flex-wrap gap-2">
-                      {item.highlight.split(' · ').map((skill, idx) => (
+                    <div className="mt-6 flex flex-wrap gap-3">
+                      {item.highlight.split("|").map((skill, skillIndex) => (
                         <span
-                          key={idx}
-                          className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-white/60 text-xs"
+                          key={skill}
+                          className={`tech-chip ${skillIndex === 1 ? "border-[rgba(255,216,77,0.28)] bg-[#25200f] text-[#fff5c9]" : ""}`}
                         >
                           {skill}
                         </span>
                       ))}
                     </div>
                   </div>
-
-                  {/* Decorative corner accent */}
-                  <div className="absolute -top-12 -right-12 w-32 h-32 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
                 </div>
-              </motion.div>
-
-              {/* Empty space for alternating layout */}
-              <div className="hidden md:block w-5/12" />
+              </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Closing statement */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-center mt-48"
+          className="mt-14"
         >
-          <p className="text-white/40 text-lg max-w-3xl mx-auto leading-relaxed">
-            The story doesn't end here. Every project, every challenge, every line of code
-            is another chapter in an ever-evolving journey.
-          </p>
+          <div className="tech-panel p-6">
+            <p className="muted-copy mx-auto max-w-3xl text-center text-sm leading-7 md:text-base">
+              The story keeps extending through projects, constraints, and better questions. Every shipped build adds another clear contour to the signal.
+            </p>
+          </div>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 }

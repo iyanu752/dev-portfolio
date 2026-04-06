@@ -1,49 +1,45 @@
 import { motion } from "framer-motion";
+import { AudioLines, Play } from "lucide-react";
 import suffication from "../assets/audio/suffication.mp3";
 
 export default function AudioPlayer() {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.6 }}
-      className="w-96 mt-8"
+      transition={{ duration: 0.5, delay: 0.35 }}
+      className="w-full max-w-[26rem]"
     >
-      <div className="relative group">
-        {/* Ornamental border glow */}
-        <div className="absolute -inset-1 bg-gradient-to-r from-red-900/20 via-purple-900/20 to-red-900/20 blur-sm group-hover:blur transition-all duration-500"></div>
+      <div className="tech-panel w-full p-4 sm:p-5">
+        <div className="mb-4 flex items-start justify-between gap-4">
+          <div>
+            <p className="font-terminal text-[0.68rem] uppercase tracking-[0.24em] text-[#d4ff42]">
+              Audio Log
+            </p>
+            <p className="mt-2 text-sm font-semibold uppercase tracking-[0.14em] text-white sm:text-base">
+              Suffocation / Crystal Castles
+            </p>
+          </div>
 
-        {/* Main audio container */}
-        <div
-          className="relative bg-black border border-red-900/50 p-6 shadow-2xl rounded-md"
-          style={{ transform: "none" }} // Prevents transform stacking issue
-        >
-          {/* Gothic decorative corners */}
-          <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-red-900/70"></div>
-          <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-red-900/70"></div>
-          <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-red-900/70"></div>
-          <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-red-900/70"></div>
-
-          {/* Audio player */}
-          <audio
-            controls
-            className="w-full pointer-events-auto"
-            style={{
-              filter:
-                "invert(1) brightness(0.5) contrast(1.2) hue-rotate(180deg)",
-            }}
-          >
-            <source src={suffication} type="audio/mpeg" />
-            Your browser does not support the audio element.
-          </audio>
-
-          {/* Decorative line underneath */}
-          <div className="mt-3 flex items-center justify-center gap-2">
-            <div className="h-px w-12 bg-gradient-to-r from-transparent to-red-900/50"></div>
-            <div className="text-red-900/50 text-xs">♦</div>
-            <div className="h-px w-12 bg-gradient-to-l from-transparent to-red-900/50"></div>
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-white/10 bg-[#111712] text-[#d4ff42]">
+            <AudioLines className="h-4 w-4" />
           </div>
         </div>
+
+        <div className="mb-4 flex items-center gap-2 border-y border-white/8 py-2">
+          <Play className="h-3.5 w-3.5 text-[#ff6b6b]" />
+          <p className="font-terminal text-[0.64rem] uppercase tracking-[0.22em] text-[#8d9a90]">
+            Personal soundtrack / playback enabled
+          </p>
+        </div>
+
+        <audio
+          controls
+          className="audio-terminal w-full min-w-0 pointer-events-auto"
+        >
+          <source src={suffication} type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
       </div>
     </motion.div>
   );

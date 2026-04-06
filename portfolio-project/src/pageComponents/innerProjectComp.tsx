@@ -1,137 +1,124 @@
-import Noise from "@/effects/Animations/Noise/Noise";
 import { motion } from "framer-motion";
-import { useLocation} from "react-router-dom"; 
-import juno from '@/assets/Juno.png';
+import { useLocation } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import juno from "@/assets/Juno.png";
+
 export default function InnerProject() {
-  const location = useLocation(); 
+  const location = useLocation();
 
   const projects = [
     {
       id: 1,
-      title: "Expert Listing",
-      category: "Completed",
-      image:
-      "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=2000&q=80",
+      title: "EXPERT LISTING",
       link: "/expertlisting",
       route: "https://expert-listing-orpin.vercel.app/",
       useImage: false,
+      signal: "PROPERTY / TRUST",
     },
     {
       id: 2,
-      title: "E-COMMERCE API`",
-      category: "Completed",
-      image:
-      "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?auto=format&fit=crop&w=2000&q=80",
+      title: "E-COMMERCE API",
       link: "/ecommerceapi",
-    route: "https://dev-portfolio-eosin-pi.vercel.app/ecommerceapi",
-    useImage: false,
-  },
-  {
-    id: 3,
-    title: "TEMPO`",
-    category: "Completed",
-    image:
-    "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?auto=format&fit=crop&w=2000&q=80",
-    link: "/tempo",
-    route: "https://dev-portfolio-eosin-pi.vercel.app/tempo",
-    useImage: false,
-  },
-  {
-    id: 4,
-    title: "JUNO",
-    category: "Completed",
-    image:juno,
-    link: "/juno",
-    route: "https://juno.build/" ,
-    useImage: true,
-  },
-  {
-    id: 5,
-    title: "AGROMAT",
-    category: "Completed",
-    image:
-    "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=2000&q=80",
-    link: "/agromat",
-    route: "https://agromat.vercel.app" ,
-    useImage: false,
-  },
+      route: "https://dev-portfolio-eosin-pi.vercel.app/ecommerceapi",
+      useImage: false,
+      signal: "API / PAYMENTS",
+    },
+    {
+      id: 3,
+      title: "TEMPO",
+      link: "/tempo",
+      route: "https://dev-portfolio-eosin-pi.vercel.app/tempo",
+      useImage: false,
+      signal: "EDITOR / SPEED",
+    },
+    {
+      id: 4,
+      title: "JUNO",
+      link: "/juno",
+      route: "https://juno.build/",
+      useImage: true,
+      image: juno,
+      signal: "OSS / SERVERLESS",
+    },
+    {
+      id: 5,
+      title: "AGROMAT",
+      link: "/agromat",
+      route: "https://agromat.vercel.app",
+      useImage: false,
+      signal: "AGRI / COMMERCE",
+    },
     {
       id: 6,
       title: "SPEEDTYPE",
-      category: "Completed",
-      image:
-        "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?auto=format&fit=crop&w=2000&q=80",
       link: "/speedtype",
       route: "https://speedtype-five.vercel.app",
       useImage: false,
+      signal: "RHYTHM / PRACTICE",
     },
   ];
 
   return (
-    <div className="w-full bg-black flex justify-center items-center text-white py-10">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.4,
-          type: "spring",
-          stiffness: 100,
-          damping: 15,
-          delay: 0.2,
-        }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-[98%] mx-auto px-2 md:px-4"
-      >
-        {projects
-          .filter((project) => project.link !== location.pathname) 
-          .map((project) => (
-            <div
-              key={project.id}
-              className="relative rounded-2xl overflow-hidden group"
-            >
-              <a href={project.link}>
-                <div className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
-                {project.useImage ? (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
-                  />
-                ) : (
-                  <iframe
-                    src={project.route}
-                    title={project.title}
-                    className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] pointer-events-none overflow-hidden object-cover transform transition-transform duration-700 group-hover:scale-110"
-                  />
-                )}
-              </div>
+    <section className="px-4 py-12 md:px-6">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-8">
+          <span className="terminal-label">More Projects</span>
+        </div>
 
-                <div className="absolute inset-0 pointer-events-none opacity-60 mix-blend-overlay">
-                  <Noise
-                    patternSize={250}
-                    patternScaleX={2}
-                    patternScaleY={2}
-                    patternRefreshInterval={1}
-                    patternAlpha={50}
-                  />
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.45,
+            type: "spring",
+            stiffness: 100,
+            damping: 15,
+            delay: 0.1,
+          }}
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
+        >
+          {projects
+            .filter((project) => project.link !== location.pathname)
+            .map((project) => (
+              <a key={project.id} href={project.link} className="group block">
+                <div className="tech-panel overflow-hidden">
+                  <div className="relative h-[320px] overflow-hidden">
+                    {project.useImage ? (
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="h-full w-full object-cover"
+                      />
+                    ) : (
+                      <iframe
+                        src={project.route}
+                        title={project.title}
+                        className="h-full w-full border-0 pointer-events-none"
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-black/35" />
+                    <div className="scanlines absolute inset-0 opacity-15" />
+                  </div>
+
+                  <div className="flex items-center justify-between gap-4 p-5">
+                    <div>
+                      <p className="font-terminal text-[0.68rem] uppercase tracking-[0.22em] text-[#d4ff42]">
+                        {project.signal}
+                      </p>
+                      <h3 className="mt-2 text-2xl font-semibold uppercase tracking-[0.12em]">
+                        {project.title}
+                      </h3>
+                    </div>
+                    <div className="flex h-11 w-11 items-center justify-center border border-white/10 bg-black/30 text-[#ffd84d]">
+                      <ArrowRight className="h-4 w-4" />
+                    </div>
+                  </div>
                 </div>
-
-               
-                <div className="absolute top-5 left-5 flex flex-col space-y-2 z-10">
-                  {/* <span className="px-3 py-1 bg-gray-800/70 rounded-full text-xs uppercase tracking-wide">
-                    {project.category}
-                  </span> */}
-                </div>
-
-          
-              <h3 className="absolute bottom-5 left-5 z-10">
-                <span className="px-4 py-2 bg-gray-800/80 backdrop-blur-md rounded-full text-lg sm:text-xl font-bold">
-                  {project.title}
-                </span>
-              </h3>
               </a>
-            </div>
-          ))}
-      </motion.div>
-    </div>
+            ))}
+        </motion.div>
+      </div>
+    </section>
   );
 }

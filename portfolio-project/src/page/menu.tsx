@@ -53,8 +53,8 @@ function FlowingMenu({ items }: { items: Item[] }) {
                 relative z-10 block
                 text-white text-6xl md:text-8xl
                 tracking-tight leading-[0.95]
-                transition-all duration-300
-                group-hover:opacity-50 group-hover:blur-sm group-hover:scale-95
+                transition-colors duration-200
+                group-hover:text-[#d4ff42]
                 px-0 py-0
                 font-future font-bold
               "
@@ -106,7 +106,7 @@ export default function Menu() {
         href={link.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="relative flex items-center gap-2 no-underline text-white text-lg"
+        className="relative flex items-center gap-2 no-underline text-white text-lg transition-colors duration-200 hover:text-[#d4ff42]"
         initial="rest"
         animate="rest"
         whileHover="hover"
