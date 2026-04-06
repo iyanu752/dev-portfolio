@@ -9,7 +9,7 @@ export default function InnerProject() {
     {
       id: 1,
       title: "Expert Listing",
-      category: "In-Progress",
+      category: "Completed",
       image:
         "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=2000&q=80",
       link: "/expertlisting",
@@ -18,7 +18,7 @@ export default function InnerProject() {
     {
       id: 2,
       title: "AGROMAT",
-      category: "In-Progress",
+      category: "Completed",
       image:
         "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=2000&q=80",
       link: "/agromat",
@@ -32,6 +32,24 @@ export default function InnerProject() {
         "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?auto=format&fit=crop&w=2000&q=80",
       link: "/speedtype",
       route: "https://speedtype-five.vercel.app"
+    },
+      {
+      id: 4,
+      title: "E-COMMERCE API`",
+      category: "Completed",
+      image:
+        "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?auto=format&fit=crop&w=2000&q=80",
+      link: "/ecommerceapi",
+      route: "https://github.com/iyanu752/e-commerce-api-template"
+    },
+         {
+      id: 5,
+      title: "TEMPO`",
+      category: "Completed",
+      image:
+        "https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?auto=format&fit=crop&w=2000&q=80",
+      link: "/tempo",
+      route: "https://dev-portfolio-eosin-pi.vercel.app/tempo"
     },
   ];
 

@@ -2,16 +2,21 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 export default function Project() {
+  const [selectedCategory, setSelectedCategory] = useState("ALL");
   const [, setHoveredId] = useState<number | null>(null);
-  
+
+  const categories = ["ALL", "FRONTEND/FULLSTACK", "API",
+    "VS CODE EXTENSIONS", "GITHUB CONTRIBUTIONS"] as const;
+
   const projects = [
     {
       id: 1,
       title: "TEMPO",
       image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop",
       link: "/tempo",
-      route: "https://github.com/iyanu752/TEMPO",
-      description: "AI-powered VS Code extension for intelligent code suggestions."
+      route: "https://dev-portfolio-eosin-pi.vercel.app/tempo",
+      description: "AI-powered VS Code extension for intelligent code suggestions.",
+      categories: ["VS CODE EXTENSIONS"]
     },
     {
       id: 2,
@@ -19,7 +24,8 @@ export default function Project() {
       image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop",
       link: "/expertlisting",
       route: "https://expert-listing-orpin.vercel.app/",
-      description: "Nigerian proptech platform for verified real estate listings."
+      description: "Nigerian proptech platform for verified real estate listings.",
+      categories: ["FRONTEND/FULLSTACK"]
     },
     {
       id: 3,
@@ -27,7 +33,8 @@ export default function Project() {
       image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&h=600&fit=crop",
       link: "/agromat",
       route: "https://agromat.vercel.app",
-      description: "Agricultural Marketplace"
+      description: "Agricultural marketplace platform.",
+      categories: ["FRONTEND/FULLSTACK"]
     },
     {
       id: 4,
@@ -35,9 +42,26 @@ export default function Project() {
       image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&h=600&fit=crop",
       link: '/speedtype',
       route: "https://speedtype-five.vercel.app",
-      description: "Typing Speed Trainer"
+      description: "Typing speed trainer.",
+      categories: ["FRONTEND/FULLSTACK"]
     },
+        {
+      id: 5,
+      title: "E-COMMERCE API TEMPLATE",
+      image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&h=600&fit=crop",
+      link: '/ecommerceapi',
+      route: "https://dev-portfolio-eosin-pi.vercel.app/ecommerceapi",
+      description: "Ready to use e-commerce API with redis, docker, paystack integration template and mongodb setup.",
+      categories: ["API"]
+    },
+
+    
   ];
+
+  const filteredProjects =
+    selectedCategory === "ALL"
+      ? projects
+      : projects.filter((project) => project.categories.includes(selectedCategory));
 
   return (
     <div className="w-full min-h-screen bg-black flex justify-center items-center text-white py-16 px-4">
@@ -54,8 +78,24 @@ export default function Project() {
           <p className="text-gray-400 text-lg">Explore my latest work</p>
         </motion.div>
 
+        <div className="mb-12 flex items-center justify-center flex-wrap gap-3">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setSelectedCategory(category)}
+              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                selectedCategory === category
+                  ? "bg-white text-black scale-105"
+                  : "bg-zinc-900 text-gray-400 hover:bg-zinc-800 hover:text-white"
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
-          {projects.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 40 }}
@@ -97,11 +137,19 @@ export default function Project() {
                         duration: 0.6,
                         delay: 0.4 + (index * 0.15),
                       }}
-                      className="flex items-start pointer-events-auto"
+                      className="flex items-start gap-2 flex-wrap pointer-events-auto"
                     >
-                      <span className="px-4 py-2 bg-white/10 backdrop-blur-xl rounded-full text-xs uppercase tracking-wider border border-white/30 shadow-2xl font-semibold">
+                      {/* <span className="px-4 py-2 bg-white/10 backdrop-blur-xl rounded-full text-xs uppercase tracking-wider border border-white/30 shadow-2xl font-semibold">
                         Live Preview
-                      </span>
+                      </span> */}
+                      {project.categories.map((category) => (
+                        <span
+                          key={category}
+                          className="px-4 py-2 bg-black/45 backdrop-blur-xl rounded-full text-xs uppercase tracking-wider border border-white/20 shadow-2xl font-semibold text-white/85"
+                        >
+                          {category}
+                        </span>
+                      ))}
                     </motion.div>
 
                     <motion.div

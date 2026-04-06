@@ -7,6 +7,8 @@ export default function MarqueeComp() {
     { id: 1, text: "[SPEEDTYPE]....CHECK OUT OTHER PROJECTS", link: "/speedtype" },
     { id: 2, text: "[EXPERT LISTING]....CHECK OUT OTHER PROJECTS", link: "/expertlisting" },
     { id: 3, text: "[AGROMAT]....CHECK OUT OTHER PROJECTS", link: "/agromat" },
+    { id: 4, text: "[ECOMMERCE API]....CHECK OUT OTHER PROJECTS", link: "/ecommerceapi" },
+    { id: 5, text: "[TEMPO]....CHECK OUT OTHER PROJECTS", link: "/tempo" },
   ];
 
   return (

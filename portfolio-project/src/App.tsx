@@ -12,6 +12,7 @@ import { Toaster } from "sonner";
 import GradualBlur from "./effects/Animations/GradualBlur/GradualBlur";
 import { useEffect, useState } from "react";
 import Tempo from "./page/tempo";
+import EcommerceApi from "./page/ecommerce";
 function Layout() {
     const [showBlur, setShowBlur] = useState(true);
 
@@ -114,6 +115,10 @@ function App() {
           path: "/agromat",
           element: <Agromat />,
         },
+        {
+          path: "/ecommerceapi",
+          element: <EcommerceApi/>
+        }
       ],
     },
   ]);
