@@ -7,6 +7,14 @@ export default function Project() {
   const projects = [
     {
       id: 1,
+      title: "TEMPO",
+      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop",
+      link: "/tempo",
+      route: "https://github.com/iyanu752/TEMPO",
+      description: "TEMPO is a powerful AI-powered code completion extension for Visual Studio Code that provides intelligent suggestions across multiple programming languages using OpenRouter's AI models"
+    },
+    {
+      id: 2,
       title: "ESTATE RUN",
       image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop",
       link: "/estaterun",
@@ -14,7 +22,7 @@ export default function Project() {
       description: "Real Estate Management Platform"
     },
     {
-      id: 2,
+      id: 3,
       title: "AGROMAT",
       image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&h=600&fit=crop",
       link: "/agromat",
@@ -22,7 +30,7 @@ export default function Project() {
       description: "Agricultural Marketplace"
     },
     {
-      id: 3,
+      id: 4,
       title: "SPEEDTYPE",
       image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&h=600&fit=crop",
       link: '/speedtype',
@@ -70,7 +78,7 @@ export default function Project() {
                  
                   <div className="relative w-full" style={{ paddingBottom: '62.5%' }}>
                     <iframe
-                      src={project.route}
+                      src={project.route || project.image}
                       title={project.title}
                       className="absolute inset-0 w-full h-full border-0 pointer-events-none scale-100 transition-transform duration-700 group-hover:scale-105"
                     />

@@ -11,6 +11,7 @@ import Agromat from "./page/agromat";
 import { Toaster } from "sonner";
 import GradualBlur from "./effects/Animations/GradualBlur/GradualBlur";
 import { useEffect, useState } from "react";
+import Tempo from "./page/tempo";
 function Layout() {
     const [showBlur, setShowBlur] = useState(true);
 
@@ -100,6 +101,10 @@ function App() {
         {
           path: "/speedtype",
           element: <SpeedType />,
+        },
+        {
+          path: "/tempo",
+          element: <Tempo />,
         },
         {
           path: "/estaterun",
