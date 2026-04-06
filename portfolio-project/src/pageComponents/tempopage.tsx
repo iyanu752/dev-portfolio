@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import TEMPO1 from "@/assets/TEMPO1.png";
 import TEMPO2 from "@/assets/TEMPO2.png";
 import TEMPO3 from "@/assets/TEMPO3.png";
-import TEMPO4 from "@/assets/TEMPO4.png";
+// import TEMPO4 from "@/assets/TEMPO4.png";
 export default function TempoPage() {
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
@@ -14,7 +14,7 @@ export default function TempoPage() {
     TEMPO1,
     TEMPO2,
     TEMPO3,
-    TEMPO4,
+    // TEMPO4,
   ];
 
   return (

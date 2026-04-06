@@ -4,9 +4,9 @@ import { useLocation } from "react-router-dom";
 export default function MarqueeComp() {
   const location = useLocation(); 
   const marquees = [
-    { id: 1, text: "[⚡ SPEEDTYPE]....CHECK OUT OTHER PROJECTS", link: "/speedtype" },
-    { id: 2, text: "[🏠 ESTATE RUN]....CHECK OUT OTHER PROJECTS", link: "/estaterun" },
-    { id: 3, text: "[🌱 AGROMAT]....CHECK OUT OTHER PROJECTS", link: "/agromat" },
+    { id: 1, text: "[SPEEDTYPE]....CHECK OUT OTHER PROJECTS", link: "/speedtype" },
+    { id: 2, text: "[EXPERT LISTING]....CHECK OUT OTHER PROJECTS", link: "/expertlisting" },
+    { id: 3, text: "[AGROMAT]....CHECK OUT OTHER PROJECTS", link: "/agromat" },
   ];
 
   return (

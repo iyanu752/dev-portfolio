@@ -1,19 +1,19 @@
 import Noise from "@/effects/Animations/Noise/Noise";
 import { motion } from "framer-motion";
-import estaterun1 from '@/assets/estaterun1.png';
-import estaterun2 from '@/assets/estaterun2.png';
-import estaterun3 from '@/assets/estaterun3.png';
-import estaterun4 from '@/assets/estaterun4.png';
-export default function Estaterunpage() {
+import expertlisting1 from '@/assets/EXPERTLISTING1.png';
+import expertlisting12 from '@/assets/EXPERTLISTING2.png';
+import expertlisting13 from '@/assets/EXPERTLISTING3.png';
+import expertlisting14 from '@/assets/EXPERTLISTING4.png';
+export default function ExpertListingpage() {
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 },
   };
   const images = [
-    estaterun1,
-    estaterun2,
-    estaterun3,
-    estaterun4,
+    expertlisting1,
+    expertlisting12,
+    expertlisting13,
+    expertlisting14,
   ]
   return (
     <>
@@ -28,7 +28,7 @@ export default function Estaterunpage() {
               viewport={{ once: true }}
               transition={{ duration: 0.3 }}
             >
-              ESTATE RUN
+              EXPERT LISTING UI
             </motion.h1>
 
             <motion.p
@@ -39,11 +39,12 @@ export default function Estaterunpage() {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.2 }}
             >
-              All In One Gated Estate Managment Platform
+              Code converted Ui design for expert listing page with subtle functionality included. Built with React, Tailwind CSS.
+              This project was made to display my 1:1 UI conversion skills, and to show my ability to create pixel-perfect designs from Figma. The page is responsive and looks great on all devices.
             </motion.p>
 
             <div className="flex flex-wrap gap-3">
-              {["React", "NestJs", "MongoDb", "ShadCN"].map(
+              {["React", "Tailwind CSS"].map(
                 (tech) => (
                   <span
                     key={tech}
@@ -70,12 +71,12 @@ export default function Estaterunpage() {
             >
               <h5 className="text-lg font-semibold">ABOUT</h5>
               <p className="text-gray-400 leading-relaxed text-sm md:text-base">
-                Estate Run is a modern gated estate management platform designed to simplify and digitize everyday estate operations. It provides residents, administrators, and visitors with a seamless experience by bringing essential services into one unified system.
+                Expert listing is a modern real estate platform designed to find verified property listings in Lagos with real map locations and pricing data. Browse apartments for rent, houses for sale, and commercial properties.
               </p>
 
               <div className="flex space-x-4 pt-4">
                 <a
-                  href="https://estate-run-client.vercel.app/"
+                  href="https://expert-listing-orpin.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="
@@ -102,6 +103,22 @@ export default function Estaterunpage() {
                   <span className="relative z-10">VIEW CODE</span>
                 </a>
               </div>
+              
+            <div  className="flex space-x-4 pt-4">
+                   <a
+                  href="https://www.figma.com/design/4r4lQKWCS69Z22b8hKnwRA/Recruitment?node-id=0-1&p=f"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    cursor-pointer relative overflow-hidden border border-white text-white px-6 py-2 rounded-lg font-semibold shadow-md
+                    transition-colors duration-300
+                    before:absolute before:inset-0 before:bg-orange-600 before:translate-y-full before:transition-transform before:duration-300
+                    hover:before:translate-y-0 hover:text-black hover:border-orange-600
+                  "
+                >
+                  <span className="relative z-10">VIEW FIGMA DESIGN</span>
+                </a>
+            </div>
 
             </motion.div>
           </div>
@@ -139,7 +156,7 @@ export default function Estaterunpage() {
                   />
                   <img
                     src={src}
-                    alt={`Estaterun Preview ${i + 1}`}
+                    alt={`ExpertListing Preview ${i + 1}`}
                     className="
                     object-cover w-full rounded-3xl
                     h-[30vh] sm:h-[35vh] md:h-[40vh] lg:h-[90vh]

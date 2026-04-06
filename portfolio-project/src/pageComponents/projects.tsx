@@ -11,15 +11,15 @@ export default function Project() {
       image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop",
       link: "/tempo",
       route: "https://github.com/iyanu752/TEMPO",
-      description: "TEMPO is a powerful AI-powered code completion extension for Visual Studio Code that provides intelligent suggestions across multiple programming languages using OpenRouter's AI models"
+      description: "AI-powered VS Code extension for intelligent code suggestions."
     },
     {
       id: 2,
-      title: "ESTATE RUN",
+      title: "EXPERT LISTING",
       image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop",
-      link: "/estaterun",
-      route: "https://estate-run-client.vercel.app",
-      description: "Real Estate Management Platform"
+      link: "/expertlisting",
+      route: "https://expert-listing-orpin.vercel.app/",
+      description: "Nigerian proptech platform for verified real estate listings."
     },
     {
       id: 3,
@@ -69,10 +69,9 @@ export default function Project() {
               onMouseLeave={() => setHoveredId(null)}
               className="relative group cursor-pointer"
             >
-              {/* Glow Effect */}
+     
               <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-blue-500/30 via-purple-500/30 to-pink-500/30 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              
-              {/* Main Card */}
+      
               <a href={project.link} className="block relative">
                 <div className="relative bg-zinc-950 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
                  
@@ -82,17 +81,15 @@ export default function Project() {
                       title={project.title}
                       className="absolute inset-0 w-full h-full border-0 pointer-events-none scale-100 transition-transform duration-700 group-hover:scale-105"
                     />
-                    
-                    {/* Strong gradient overlay for text visibility */}
+               
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30 group-hover:from-black/95 group-hover:via-black/70 transition-all duration-500" />
-                    
-                    {/* Additional solid overlay at bottom for guaranteed text contrast */}
+                  
                     <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black to-transparent" />
                   </div>
 
-                  {/* Content Overlay */}
+                
                   <div className="absolute inset-0 flex flex-col justify-between p-6 md:p-8 pointer-events-none">
-                    {/* Top Badge */}
+             
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -107,7 +104,6 @@ export default function Project() {
                       </span>
                     </motion.div>
 
-                    {/* Bottom Content with enhanced visibility */}
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -117,7 +113,7 @@ export default function Project() {
                       }}
                       className="relative z-10"
                     >
-                      {/* Text background for extra contrast */}
+           
                       <div className="absolute -inset-4 bg-gradient-to-t from-black via-black/80 to-transparent blur-xl" />
                       
                       <div className="relative space-y-3">
@@ -128,7 +124,7 @@ export default function Project() {
                           {project.description}
                         </p>
                         
-                        {/* Animated Arrow with background */}
+            
                         <div className="flex items-center gap-2 pt-2 pointer-events-auto">
                           <span className="inline-flex items-center gap-2 px-4 py-2 bg-white text-black rounded-full text-sm font-semibold shadow-xl transform group-hover:scale-105 transition-transform duration-300">
                             <span>View Project</span>
@@ -141,7 +137,6 @@ export default function Project() {
                     </motion.div>
                   </div>
 
-                  {/* Subtle shine effect on hover */}
                   <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
                 </div>
               </a>

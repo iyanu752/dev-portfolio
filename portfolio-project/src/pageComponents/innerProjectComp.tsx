@@ -8,12 +8,12 @@ export default function InnerProject() {
   const projects = [
     {
       id: 1,
-      title: "ESTATE RUN",
+      title: "Expert Listing",
       category: "In-Progress",
       image:
         "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=2000&q=80",
-      link: "/estaterun",
-      route: "https://estate-run-client.vercel.app",
+      link: "/expertlisting",
+      route: "https://expert-listing-orpin.vercel.app/",
     },
     {
       id: 2,

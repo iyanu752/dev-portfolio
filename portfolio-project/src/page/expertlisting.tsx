@@ -1,11 +1,11 @@
-import Estaterunpage from "@/pageComponents/estaterunpage"
+import ExpertListingPage from "@/pageComponents/expertlistingpage"
 import Footer from "@/pageComponents/footer"
 import InnerProject from "@/pageComponents/innerProjectComp"
 import MarqueeComp from "@/pageComponents/marquee"
-export default function Estaterun(){
+export default function ExpertListing(){
     return(
         <>
-        <Estaterunpage/>
+        <ExpertListingPage/>
         <MarqueeComp/>
         <InnerProject/>
         <Footer/>

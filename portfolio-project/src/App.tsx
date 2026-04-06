@@ -6,7 +6,7 @@ import Contact from "./page/contact";
 import About from "./page/about";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import SpeedType from "./page/speedtype";
-import Estaterun from "./page/estaterun";
+import ExpertListing from "./page/expertlisting";
 import Agromat from "./page/agromat";
 import { Toaster } from "sonner";
 import GradualBlur from "./effects/Animations/GradualBlur/GradualBlur";
@@ -107,8 +107,8 @@ function App() {
           element: <Tempo />,
         },
         {
-          path: "/estaterun",
-          element: <Estaterun />,
+          path: "/expertlisting",
+          element: <ExpertListing />,
         },
         {
           path: "/agromat",
