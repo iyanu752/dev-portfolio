@@ -13,6 +13,7 @@ import GradualBlur from "./effects/Animations/GradualBlur/GradualBlur";
 import { useEffect, useState } from "react";
 import Tempo from "./page/tempo";
 import EcommerceApi from "./page/ecommerce";
+import JunogPage from "./pageComponents/junopage";
 function Layout() {
     const [showBlur, setShowBlur] = useState(true);
 
@@ -118,6 +119,10 @@ function App() {
         {
           path: "/ecommerceapi",
           element: <EcommerceApi/>
+        },
+        {
+          path: "/juno",
+          element: <JunogPage/>
         }
       ],
     },

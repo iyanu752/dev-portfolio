@@ -57,7 +57,9 @@ export default function Hero() {
             <div className="flex flex-wrap gap-3">
               {[
                 { label: "About Me", href: "/about" },
-                { label: "Resume", href: "https://drive.google.com/file/d/1epA7KghdaMWFsr6AIKxCsNxkAQ1OBMoR/view?usp=sharing" },
+                { label: "Resume", href: "https://drive.google.com/file/d/1fvNU9Voo_Wh5ZLamhHiY4LWjqV91My_l/view?usp=sharing" },
+                {label: "Github", href: "https://github.com/iyanu752"},
+                {label: "Linkedin", href: "https://www.linkedin.com/in/ahmed-iyanuoluwa-b4111a26a"},
               ].map((item, index) => (
                 <motion.a
                   key={item.label}
