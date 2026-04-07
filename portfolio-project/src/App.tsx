@@ -1,20 +1,22 @@
 import "./App.css";
 import Navbar from "./pageComponents/nav";
-import LandingPage from "./page/landing";
-import Menu from "./page/menu";
-import Contact from "./page/contact";
-import About from "./page/about";
+import { Suspense, lazy, useEffect, useMemo, useState } from "react";
+import AppLoader from "./pageComponents/appLoader";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import SpeedType from "./page/speedtype";
-import ExpertListing from "./page/expertlisting";
-import Agromat from "./page/agromat";
 import { Toaster } from "sonner";
 import GradualBlur from "./effects/Animations/GradualBlur/GradualBlur";
-import { useEffect, useState } from "react";
-import Tempo from "./page/tempo";
-import EcommerceApi from "./page/ecommerce";
-import Juno from "./page/juno";
 import IntroSplash from "./pageComponents/introSplash";
+
+const LandingPage = lazy(() => import("./page/landing"));
+const Menu = lazy(() => import("./page/menu"));
+const Contact = lazy(() => import("./page/contact"));
+const About = lazy(() => import("./page/about"));
+const SpeedType = lazy(() => import("./page/speedtype"));
+const ExpertListing = lazy(() => import("./page/expertlisting"));
+const Agromat = lazy(() => import("./page/agromat"));
+const Tempo = lazy(() => import("./page/tempo"));
+const EcommerceApi = lazy(() => import("./page/ecommerce"));
+const Juno = lazy(() => import("./page/juno"));
 
 const INTRO_STORAGE_KEY = "jacx-intro-played";
 
@@ -107,59 +109,65 @@ function App() {
     return () => window.clearTimeout(timer);
   }, [showIntro]);
 
-  const router = createBrowserRouter([
-    {
-      element: <Layout />,
-      children: [
+  const router = useMemo(
+    () =>
+      createBrowserRouter([
         {
-          path: "/",
-          element: <LandingPage />,
+          element: <Layout />,
+          children: [
+            {
+              path: "/",
+              element: <LandingPage />,
+            },
+            {
+              path: "/menu",
+              element: <Menu />,
+            },
+            {
+              path: "/contact",
+              element: <Contact />,
+            },
+            {
+              path: "/about",
+              element: <About />,
+            },
+            {
+              path: "/speedtype",
+              element: <SpeedType />,
+            },
+            {
+              path: "/tempo",
+              element: <Tempo />,
+            },
+            {
+              path: "/expertlisting",
+              element: <ExpertListing />,
+            },
+            {
+              path: "/agromat",
+              element: <Agromat />,
+            },
+            {
+              path: "/ecommerceapi",
+              element: <EcommerceApi />,
+            },
+            {
+              path: "/juno",
+              element: <Juno />,
+            },
+          ],
         },
-        {
-          path: "/menu",
-          element: <Menu />,
-        },
-        {
-          path: "/contact",
-          element: <Contact />,
-        },
-        {
-          path: "/about",
-          element: <About />,
-        },
-        {
-          path: "/speedtype",
-          element: <SpeedType />,
-        },
-        {
-          path: "/tempo",
-          element: <Tempo />,
-        },
-        {
-          path: "/expertlisting",
-          element: <ExpertListing />,
-        },
-        {
-          path: "/agromat",
-          element: <Agromat />,
-        },
-        {
-          path: "/ecommerceapi",
-          element: <EcommerceApi/>
-        },
-        {
-          path: "/juno",
-          element: <Juno/>
-        }
-      ],
-    },
-  ]);
+      ]),
+    []
+  );
 
   return (
     <>
-      <Toaster position="top-right" expand={true}/>
+      <Toaster position="top-right" expand={true} />
       {showIntro ? <IntroSplash onComplete={() => setShowIntro(false)} /> : null}
-      <RouterProvider router={router} />
+      <Suspense fallback={<AppLoader />}>
+        <RouterProvider router={router} />
+      </Suspense>
     </>
   );
 }

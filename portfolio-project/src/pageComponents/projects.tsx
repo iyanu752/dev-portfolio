@@ -158,12 +158,15 @@ export default function Project() {
                     <img
                       src={project.image}
                       alt={project.title}
+                      loading="lazy"
+                      decoding="async"
                       className="absolute inset-0 h-full w-full object-cover"
                     />
                   ) : (
                     <iframe
                       src={project.route}
                       title={project.title}
+                      loading="lazy"
                       className="absolute inset-0 h-full w-full border-0 pointer-events-none"
                     />
                   )}
