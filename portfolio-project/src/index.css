@@ -33,6 +33,7 @@ body {
   color: var(--text);
   font-family: "Chakra Petch", sans-serif;
   background: var(--bg);
+  cursor: url("/cursor-tech.svg") 6 6, default;
 }
 
 body::before,
@@ -72,6 +73,16 @@ a {
 button,
 a {
   -webkit-tap-highlight-color: transparent;
+}
+
+a,
+button,
+input,
+textarea,
+select,
+label,
+[role="button"] {
+  cursor: url("/cursor-tech-pointer.svg") 6 6, pointer;
 }
 
 .font-terminal {
