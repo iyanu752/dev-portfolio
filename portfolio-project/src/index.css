@@ -260,6 +260,14 @@ a {
   font-weight: 700;
 }
 
+.section-title3 {
+  font-size: clamp(4rem, 3vw, 3rem);
+  line-height: 0.92;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
 .section-title2 .accent {
   color: var(--green);
 }

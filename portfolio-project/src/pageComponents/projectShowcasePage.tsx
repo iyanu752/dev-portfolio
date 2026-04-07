@@ -45,7 +45,7 @@ export default function ProjectShowcasePage({
               className="mt-6 flex items-start justify-between gap-4"
             >
               <div>
-                <h1 className="section-title text-[clamp(2.8rem,7vw,5.8rem)]">
+                <h1 className="section-title3 text-[clamp(2.8rem,7vw,5.8rem)]">
                   {title}
                 </h1>
                 <p className="mt-4 max-w-xl font-terminal text-sm uppercase tracking-[0.22em] text-[#d4ff42]">
