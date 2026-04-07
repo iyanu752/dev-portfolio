@@ -305,6 +305,39 @@ a {
   filter: saturate(0%) brightness(0.9);
 }
 
+.intro-grid {
+  background-image:
+    linear-gradient(rgba(212, 255, 66, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 255, 66, 0.12) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+.intro-scan-line {
+  position: absolute;
+  left: -10%;
+  top: 22%;
+  width: 120%;
+  height: 3px;
+  background: #d4ff42;
+  box-shadow: 0 0 18px rgba(212, 255, 66, 0.35);
+  transform: rotate(-12deg);
+}
+
+.intro-scan-line--alt {
+  background: #ff4d4d;
+  box-shadow: 0 0 18px rgba(255, 77, 77, 0.35);
+  transform: rotate(8deg);
+}
+
+.intro-glitch-bar {
+  background: rgba(212, 255, 66, 0.24);
+  mix-blend-mode: screen;
+}
+
+.intro-glitch-bar--alt {
+  background: rgba(255, 77, 77, 0.18);
+}
+
 ::-webkit-scrollbar {
   width: 7px;
 }

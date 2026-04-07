@@ -35,7 +35,7 @@ export default function Hero() {
             transition={{ duration: 0.5 }}
             className="terminal-label"
           >
-            Marathon / Tech-Noir / Interface
+            Iyanu / Jacx / Sketchy
           </motion.div>
 
           <motion.p

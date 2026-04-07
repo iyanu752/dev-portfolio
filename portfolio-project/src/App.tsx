@@ -14,6 +14,10 @@ import { useEffect, useState } from "react";
 import Tempo from "./page/tempo";
 import EcommerceApi from "./page/ecommerce";
 import Juno from "./page/juno";
+import IntroSplash from "./pageComponents/introSplash";
+
+const INTRO_STORAGE_KEY = "jacx-intro-played";
+
 function Layout() {
     const [showBlur, setShowBlur] = useState(true);
 
@@ -81,6 +85,28 @@ function Layout() {
 }
 
 function App() {
+  const [showIntro, setShowIntro] = useState(() => {
+    if (window.location.pathname !== "/") return false;
+
+    const navEntry = performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined;
+    const wasReload = navEntry?.type === "reload";
+    const alreadyPlayed = sessionStorage.getItem(INTRO_STORAGE_KEY) === "true";
+
+    return wasReload || !alreadyPlayed;
+  });
+
+  useEffect(() => {
+    if (!showIntro) return;
+
+    sessionStorage.setItem(INTRO_STORAGE_KEY, "true");
+
+    const timer = window.setTimeout(() => {
+      setShowIntro(false);
+    }, 6000);
+
+    return () => window.clearTimeout(timer);
+  }, [showIntro]);
+
   const router = createBrowserRouter([
     {
       element: <Layout />,
@@ -132,6 +158,7 @@ function App() {
   return (
     <>
       <Toaster position="top-right" expand={true}/>
+      {showIntro ? <IntroSplash onComplete={() => setShowIntro(false)} /> : null}
       <RouterProvider router={router} />
     </>
   );
